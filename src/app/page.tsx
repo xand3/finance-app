@@ -46,13 +46,25 @@ export default function Home() {
             {registros.map((registro) => (
               <tr key={registro.id}>
                 <td>
-                  <p className="text-center text-lg border-b border-gray-300">{registro.descripton}</p>
+                  <div className="mx-5">
+                    <p className="text-center text-lg border-b border-gray-300">
+                      {registro.descripton}
+                    </p>
+                  </div>
                 </td>
                 <td>
-                  <p className="text-center text-lg border-b border-gray-300">{registro.value}</p>
+                  <div className="mx-5">
+                    <p className="text-center text-lg border-b border-gray-300">
+                      {registro.value}
+                    </p>
+                  </div>
                 </td>
                 <td>
-                  <p className="text-center text-lg border-b border-gray-300">{new Date(registro.date).toLocaleDateString("en-GB")}</p>
+                  <div className="mx-5">
+                    <p className="text-center text-lg border-b border-gray-300">
+                      {new Date(registro.date).toLocaleDateString("en-GB")}
+                    </p>
+                  </div>
                 </td>
               </tr>
             ))}
