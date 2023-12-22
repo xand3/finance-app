@@ -1,4 +1,8 @@
+import { Registro } from "@/types/Registro";
+import { registros } from "@/data/registros";
+
 export default function Home() {
+  
   return (
     <main className="flex flex-col justify-center">
       <header className="w-full flex justify-center text-2xl">
@@ -9,13 +13,13 @@ export default function Home() {
           <p>Este mês:</p>
         </div>
         <div className="grid grid-cols-3 grid-rows-1">
-          <div>
+          <div className="flex justify-center">
             <p>Entradas</p>
           </div>
-          <div>
+          <div className="flex justify-center">
             <p>Saidas</p>
           </div>
-          <div>
+          <div className="flex justify-center">
             Total Geral
           </div>
         </div>
