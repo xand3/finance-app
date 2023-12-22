@@ -2,11 +2,11 @@ import { registros } from "@/data/registros";
 
 export default function Home() {
   const entradas: number = registros.reduce((acc, registro) => {
-    return registro.recordType === 1 ? acc + registro.value : acc;
+    return registro.recordType === "E" ? acc + registro.value : acc;
   }, 0);
 
   const saidas: number = registros.reduce((acc, registro) => {
-    return registro.recordType === 0 ? acc + registro.value : acc;
+    return registro.recordType === "S" ? acc + registro.value : acc;
   }, 0);
 
   return (
@@ -15,29 +15,29 @@ export default function Home() {
         <h1 className="m-3">Controle Financeiro</h1>
       </header>
       <div className="flex flex-col">
-        <div className="m-3">
+        <div className="mx-6">
           <p>Este mês:</p>
         </div>
-        <div className="grid grid-cols-3 grid-rows-1">
-          <div className="flex items-center flex-col">
-            <p>Entradas</p>
+        <div className="grid grid-cols-3 grid-rows-1 w-1/2 my-5">
+          <div className="bg-slate-600 flex items-center flex-col border-solid border-2 rounded-md text-white mx-5">
+            <p className="font-bold">Entradas</p>
             <p>{entradas.toFixed(2)}</p>
           </div>
-          <div className="flex items-center flex-col">
-            <p>Saidas</p>
+          <div className="bg-slate-600 flex items-center flex-col border-solid border-2 rounded-md text-white mx-5">
+            <p className="font-bold">Saidas</p>
             <p>{saidas.toFixed(2)}</p>
           </div>
-          <div className="flex items-center flex-col">
-            <p>Total Geral</p>
+          <div className="bg-slate-600 flex items-center flex-col border-solid border-2 rounded-md text-white mx-5">
+            <p className="font-bold">Total Geral</p>
             <p>{(entradas - saidas).toFixed(2)}</p>
           </div>
         </div>
       </div>
-      <div>
-        <table className="w-full m-3">
+      <div className="flex justify-center">
+        <table className="w-full mx-10">
           <thead>
-            <tr>
-              <th>Descrição</th>
+            <tr className="text-xl border-y-2 border-solid border-gray-600">
+              <th className="text-left">Descrição</th>
               <th>Valor</th>
               <th>Data</th>
             </tr>
@@ -45,10 +45,15 @@ export default function Home() {
           <tbody>
             {registros.map((registro) => (
               <tr key={registro.id}>
-                <td>{registro.descripton}</td>
-                <td>{registro.value}</td>
-                <td>{new Date(registro.date).toLocaleDateString('en-GB')}</td>
-                
+                <td>
+                  <p className="text-center text-lg border-b border-gray-300">{registro.descripton}</p>
+                </td>
+                <td>
+                  <p className="text-center text-lg border-b border-gray-300">{registro.value}</p>
+                </td>
+                <td>
+                  <p className="text-center text-lg border-b border-gray-300">{new Date(registro.date).toLocaleDateString("en-GB")}</p>
+                </td>
               </tr>
             ))}
           </tbody>

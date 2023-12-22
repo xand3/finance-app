@@ -4,5 +4,5 @@ export type Registro = {
   descripton: string;
   date: string;
   value: number;
-  recordType: 1 | 0 // 1 entrada | 0 saida
+  recordType: "E" | "S" // 1 entrada | 0 saida
 }
