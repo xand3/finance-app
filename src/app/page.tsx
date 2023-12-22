@@ -2,7 +2,12 @@ import { Registro } from "@/types/Registro";
 import { registros } from "@/data/registros";
 
 export default function Home() {
-  
+  const entradas = registros.reduce((acc, registro) => {
+    return registro.recordType === 1 ? acc + registro.value : acc;
+  }, 0);
+
+  console.log(entradas);
+
   return (
     <main className="flex flex-col justify-center">
       <header className="w-full flex justify-center text-2xl">
@@ -13,17 +18,17 @@ export default function Home() {
           <p>Este mês:</p>
         </div>
         <div className="grid grid-cols-3 grid-rows-1">
-          <div className="flex justify-center">
+          <div className="flex justify-center flex-col">
             <p>Entradas</p>
+            <p>{entradas}</p>
           </div>
           <div className="flex justify-center">
             <p>Saidas</p>
+            <p>{}</p>
           </div>
-          <div className="flex justify-center">
-            Total Geral
-          </div>
+          <div className="flex justify-center">Total Geral</div>
         </div>
       </div>
     </main>
-  )
+  );
 }

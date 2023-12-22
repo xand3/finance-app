@@ -6,29 +6,29 @@ export const registros: Array<Registro> = [
   {
     id: uuid(),
     date: new Date().toISOString(),
-    descricao: "Internet",
+    descripton: "Internet",
     value: 60.00,
-    tipo: 0
+    recordType: 0
   },
   {
     id: uuid(),
     date: new Date().toISOString(),
-    descricao: "Luz",
+    descripton: "Luz",
     value: 80,
-    tipo: 0
+    recordType: 0
   },
   {
     id: uuid(),
     date: new Date().toISOString(),
-    descricao: "Curso Udemy",
+    descripton: "Curso Udemy",
     value: 27,
-    tipo: 0
+    recordType: 0
   },
   {
     id: uuid(),
     date: new Date().toISOString(),
-    descricao: "Salário",
-    value: 1.320,
-    tipo: 1
+    descripton: "Salário",
+    value: 1320.0,
+    recordType: 1
   },
 ]

@@ -1,8 +1,8 @@
 
 export type Registro = {
   id: string;
-  descricao: string;
+  descripton: string;
   date: string;
   value: number;
-  tipo: 1 | 0
+  recordType: 1 | 0 // 1 entrada | 0 saida
 }
