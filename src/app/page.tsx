@@ -1,6 +1,21 @@
+"use client"
+
 import { registros } from "@/data/registros";
+import RegisterModal from "@/components/RegisterModal";
+import { useState } from "react";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+
   const entradas: number = registros.reduce((acc, registro) => {
     return registro.recordType === "E" ? acc + registro.value : acc;
   }, 0);
@@ -34,7 +49,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center mx-6 my-5 border-2 border-slate-600 rounded-md w-36">
-            <button>ADICIONAR</button>
+            <button onClick={openModal}>ADICIONAR</button>
           </div>
         </div>
       </div>
@@ -76,6 +91,9 @@ export default function Home() {
           </tbody>
         </table>
       </div>
+      {isOpen && 
+        <RegisterModal closeModal={closeModal}/>
+      }
     </main>
   );
 }
