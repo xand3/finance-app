@@ -18,18 +18,23 @@ export default function Home() {
         <div className="mx-6">
           <p>Este mês:</p>
         </div>
-        <div className="grid grid-cols-3 grid-rows-1 w-1/2 my-5">
-          <div className="bg-slate-600 flex items-center flex-col border-solid border-2 rounded-md text-white mx-5">
-            <p className="font-bold">Entradas</p>
-            <p>{entradas.toFixed(2)}</p>
+        <div className="flex justify-between">
+          <div className="grid grid-cols-3 grid-rows-1 w-1/2 my-5">
+            <div className="min-h-20 bg-slate-600 flex items-center justify-center flex-col border-solid border-2 rounded-md text-white mx-5">
+              <p className="font-bold">Entradas</p>
+              <p className="text-green-300">{entradas.toFixed(2)}</p>
+            </div>
+            <div className="bg-slate-600 flex items-center justify-center flex-col border-solid border-2 rounded-md text-white mx-5">
+              <p className="font-bold">Saidas</p>
+              <p className="text-red-300">{saidas.toFixed(2)}</p>
+            </div>
+            <div className="bg-slate-600 flex items-center justify-center flex-col border-solid border-2 rounded-md text-white mx-5">
+              <p className="font-bold">Total Geral</p>
+              <p>{(entradas - saidas).toFixed(2)}</p>
+            </div>
           </div>
-          <div className="bg-slate-600 flex items-center flex-col border-solid border-2 rounded-md text-white mx-5">
-            <p className="font-bold">Saidas</p>
-            <p>{saidas.toFixed(2)}</p>
-          </div>
-          <div className="bg-slate-600 flex items-center flex-col border-solid border-2 rounded-md text-white mx-5">
-            <p className="font-bold">Total Geral</p>
-            <p>{(entradas - saidas).toFixed(2)}</p>
+          <div className="flex justify-center mx-6 my-5 border-2 border-slate-600 rounded-md w-36">
+            <button>ADICIONAR</button>
           </div>
         </div>
       </div>
