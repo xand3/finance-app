@@ -1,6 +1,6 @@
 "use client"
 
-import { registros } from "@/data/registros";
+import { records } from "@/data/Records";
 import RegisterModal from "@/components/RegisterModal";
 import { useState } from "react";
 
@@ -16,12 +16,12 @@ export default function Home() {
   }
 
 
-  const entradas: number = registros.reduce((acc, registro) => {
-    return registro.recordType === "E" ? acc + registro.value : acc;
+  const entradas: number = records.reduce((acc, record) => {
+    return record.recordType === "E" ? acc + record.value : acc;
   }, 0);
 
-  const saidas: number = registros.reduce((acc, registro) => {
-    return registro.recordType === "S" ? acc + registro.value : acc;
+  const saidas: number = records.reduce((acc, record) => {
+    return record.recordType === "S" ? acc + record.value : acc;
   }, 0);
 
   return (
@@ -63,26 +63,26 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {registros.map((registro) => (
-              <tr key={registro.id}>
+            {records.map((record) => (
+              <tr key={record.id}>
                 <td>
                   <div className="mx-5">
                     <p className="text-center text-lg border-b border-gray-300">
-                      {registro.descripton}
+                      {record.descripton}
                     </p>
                   </div>
                 </td>
                 <td>
                   <div className="mx-5">
                     <p className="text-center text-lg border-b border-gray-300">
-                      {registro.value}
+                      {record.value}
                     </p>
                   </div>
                 </td>
                 <td>
                   <div className="mx-5">
                     <p className="text-center text-lg border-b border-gray-300">
-                      {new Date(registro.date).toLocaleDateString("en-GB")}
+                      {new Date(record.date).toLocaleDateString("en-GB")}
                     </p>
                   </div>
                 </td>
