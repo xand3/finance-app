@@ -15,7 +15,6 @@ export default function Home() {
     setIsOpen(true);
   }
 
-
   const entradas: number = records.reduce((acc, record) => {
     return record.recordType === "E" ? acc + record.value : acc;
   }, 0);
@@ -59,7 +58,8 @@ export default function Home() {
             <tr className="text-xl border-y-2 border-solid border-gray-600">
               <th className="text-left">Descrição</th>
               <th>Valor</th>
-              <th>Data</th>
+              <th>Data de Inclusão</th>
+              <th>Data de Vencimento</th>
             </tr>
           </thead>
           <tbody>
@@ -83,6 +83,13 @@ export default function Home() {
                   <div className="mx-5">
                     <p className="text-center text-lg border-b border-gray-300">
                       {new Date(record.date).toLocaleDateString("en-GB")}
+                    </p>
+                  </div>
+                </td>
+                <td>
+                  <div className="mx-5">
+                    <p className="text-center text-lg border-b border-gray-300">
+                      {new Date(record.date_expiration).toLocaleDateString("en-GB")}
                     </p>
                   </div>
                 </td>
