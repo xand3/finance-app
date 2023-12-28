@@ -1,11 +1,45 @@
 "use client"
+import { v4 as uuid } from 'uuid';
 
 import { records } from "@/data/Records";
+import { Record } from '@/types/Record';
 import RegisterModal from "@/components/RegisterModal";
 import { useState } from "react";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
+  const [records, setRecords] = useState([{
+    id: uuid(),
+    date: new Date().toISOString(),
+    date_expiration: new Date().toISOString(),
+    descripton: "Internet",
+    value: 60.00,
+    recordType: 'S'
+  },
+  {
+    id: uuid(),
+    date: new Date().toISOString(),
+    date_expiration: new Date().toISOString(),
+    descripton: "Luz",
+    value: 80,
+    recordType: "S"
+  },
+  {
+    id: uuid(),
+    date: new Date().toISOString(),
+    date_expiration: new Date().toISOString(),
+    descripton: "Curso Udemy",
+    value: 27,
+    recordType: "S"
+  },
+  {
+    id: uuid(),
+    date: new Date().toISOString(),
+    date_expiration: new Date().toISOString(),
+    descripton: "Salário",
+    value: 1320.0,
+    recordType: "E"
+  },])
   
   function closeModal() {
     setIsOpen(false);
@@ -13,6 +47,10 @@ export default function Home() {
 
   function openModal() {
     setIsOpen(true);
+  }
+
+  const createRecord = (record: Record) => {
+    
   }
 
   const entradas: number = records.reduce((acc, record) => {
