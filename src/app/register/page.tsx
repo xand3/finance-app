@@ -1,19 +1,30 @@
-"use client"
+"use client";
 
-import { initFirebase } from "../../../firebase/fireBaseApp";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { initFirebase } from "../../../firebase/fireBaseApp";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const app = initFirebase();
-  
+
   const [userEmail, setUserEmail] = useState("");
   const [userPwd, setUserPwd] = useState("");
 
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-  }
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, userEmail, userPwd)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        window.alert(`${user.uid} criado com sucesso`);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(`Error code: ${errorCode}, massege: ${errorMessage}`);
+      });
+  };
 
   return (
     <section className="flex min-h-screen w-screen justify-center items-center">
@@ -44,5 +55,5 @@ export default function LoginPage() {
         </form>
       </div>
     </section>
-  )
-};
+  );
+}
