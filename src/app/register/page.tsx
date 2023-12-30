@@ -22,7 +22,7 @@ export default function RegisterPage() {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error(`Error code: ${errorCode}, massege: ${errorMessage}`);
+        console.error(`Error code: ${errorCode}, message: ${errorMessage}`);
       });
   };
 
@@ -34,6 +34,7 @@ export default function RegisterPage() {
           <div className="flex flex-col m-3">
             <label htmlFor="">E-mail:</label>
             <input
+              className="text-black"
               id="useremail"
               type="email"
               placeholder="Digite seu e-mail"
@@ -43,6 +44,7 @@ export default function RegisterPage() {
           <div className="flex flex-col m-3">
             <label htmlFor="">Senha:</label>
             <input
+              className="text-black"
               id="userpwd"
               type="password"
               placeholder="Digite sua senha"
