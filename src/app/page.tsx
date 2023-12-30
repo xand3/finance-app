@@ -1,15 +1,13 @@
 import PageHeader from "@/components/PageHeader";
-import Features from "@/components/Features";
 import PageFooter from "@/components/PageFooter";
+import Features from "@/components/Features";
 
 export default function Example() {
-  return(
-  <>
-    <PageHeader />
-    <main>
+  return (
+    <main className="flex flex-col justify-between">
+      <PageHeader />
       <Features />
-    </main>
       <PageFooter />
-  </>
+    </main>
   );
-};
+}

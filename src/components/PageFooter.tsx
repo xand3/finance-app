@@ -6,8 +6,8 @@ const options = [
 
 export default function PageFooter() {
   return (
-    <footer className="flex justify-center border-t p-3">
-      <div className="flex flex-col ">
+    <footer className="flex justify-center border-t">
+      <div className="flex flex-col">
         <div className="flex justify-around my-5">
           {options.map((item) => (
             <a key={item.name} href={item.href}>
