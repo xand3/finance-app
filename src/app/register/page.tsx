@@ -4,9 +4,13 @@ import { useState } from "react";
 import { initFirebase } from "../../../firebase/fireBaseApp";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
+import PageHeader from "@/components/PageHeader";
+import PageFooter from "@/components/PageFooter";
+
 export default function RegisterPage() {
   const app = initFirebase();
 
+  const [userName, serUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPwd, setUserPwd] = useState("");
 
@@ -26,35 +30,51 @@ export default function RegisterPage() {
   };
 
   return (
-    <section className="flex min-h-screen w-screen justify-center items-center">
-      <div className="w-80 h-1/2 flex flex-col justify-center items-center rounded-lg border-2 bg-gray-500 text-white">
-        <h1 className="text-xl m-3">Registre-se</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="flex flex-col m-3">
-            <label htmlFor="">E-mail:</label>
-            <input
-              className="text-black"
-              id="useremail"
-              type="email"
-              placeholder="Digite seu e-mail"
-              onChange={(e) => setUserEmail(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col m-3">
-            <label htmlFor="">Senha:</label>
-            <input
-              className="text-black"
-              id="userpwd"
-              type="password"
-              placeholder="Digite sua senha"
-              onChange={(e) => setUserPwd(e.target.value)}
-            />
-          </div>
-          <div className="flex justify-center m-5">
-            <button className="border-2 rounded-md p-1">Criar conta</button>
-          </div>
-        </form>
-      </div>
-    </section>
+    <>
+      <PageHeader />
+      <section className="flex justify-center items-center my-16">
+        <div className="bg-white shadow-lg rounded px-16 pt-6 pb-8 mb-4 w-1/3">
+          <h1 className="text-xl m-3 text-center">Faça seu cadastro</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="flex flex-col m-3">
+              <label htmlFor="">Nome:</label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="useremail"
+                type="text"
+                placeholder="Nome"
+                onChange={(e) => serUserName(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col m-3">
+              <label htmlFor="">E-mail:</label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="useremail"
+                type="email"
+                placeholder="E-mail"
+                onChange={(e) => setUserEmail(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col m-3">
+              <label htmlFor="">Senha:</label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="userpwd"
+                type="password"
+                placeholder="*******"
+                onChange={(e) => setUserPwd(e.target.value)}
+              />
+            </div>
+            <div className="flex justify-center m-5">
+              <button className="bg-transparent hover:bg-gray-200 text-black hover:text-white py-2 px-4 border border-gray-600 rounded">
+                Criar conta
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <PageFooter />
+    </>
   );
 }

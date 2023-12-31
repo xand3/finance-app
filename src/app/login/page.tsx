@@ -32,8 +32,8 @@ export default function LoginPage() {
   return (
     <>
       <PageHeader />
-      <section className="flex justify-center items-center my-24">
-        <div className="bg-white shadow-lg rounded px-16 pt-6 pb-8 mb-4">
+      <section className="flex justify-center items-center my-20">
+        <div className="bg-white shadow-lg rounded px-16 pt-6 pb-8 mb-4 w-1/3 h-1/5">
           <h1 className="text-xl m-3 text-center">Acesse o sistema</h1>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col m-3">
@@ -56,12 +56,17 @@ export default function LoginPage() {
                 onChange={(e) => setUserPwd(e.target.value)}
               />
             </div>
-            <div className="flex justify-center m-5">
+            <div className="flex justify-around m-5">
               <button className="bg-transparent hover:bg-gray-200 text-black hover:text-white py-2 px-4 border border-gray-600 rounded">
                 Fazer Login
               </button>
             </div>
           </form>
+          <div className="flex justify-center">
+            <p className="">
+              Não possui conta? <a href="/register">registre-se aqui.</a>
+            </p>
+          </div>
         </div>
       </section>
       <PageFooter />
