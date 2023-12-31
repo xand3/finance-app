@@ -33,12 +33,13 @@ export default function LoginPage() {
     <>
       <PageHeader />
       <section className="flex justify-center items-center my-20">
-        <div className="bg-white shadow-lg rounded px-16 pt-6 pb-8 mb-4 w-1/3 h-1/5">
+        <div className="bg-white sm:shadow-lg shadow-none rounded px-16 pt-6 pb-8 mb-4 max-w-1/3 h-1/5">
           <h1 className="text-xl m-3 text-center">Acesse o sistema</h1>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col m-3">
-              <label htmlFor="">E-mail:</label>
+              <label htmlFor="useremail">E-mail:</label>
               <input
+                required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="useremail"
                 type="email"
@@ -47,8 +48,9 @@ export default function LoginPage() {
               />
             </div>
             <div className="flex flex-col m-3">
-              <label htmlFor="">Senha:</label>
+              <label htmlFor="userpwd">Senha:</label>
               <input
+                required
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="userpwd"
                 type="password"
