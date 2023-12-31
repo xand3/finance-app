@@ -31,33 +31,35 @@ export default function LoginPage() {
 
   return (
     <>
-      <PageHeader/>
-      <section className="flex justify-center items-center my-56">
-        <div className="w-80 h-1/2 flex flex-col justify-center items-center rounded-lg border-2 bg-gray-500 text-white">
-          <h1 className="text-xl m-3">Acesse o sistema</h1>
+      <PageHeader />
+      <section className="flex justify-center items-center my-24">
+        <div className="bg-white shadow-lg rounded px-16 pt-6 pb-8 mb-4">
+          <h1 className="text-xl m-3 text-center">Acesse o sistema</h1>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col m-3">
               <label htmlFor="">E-mail:</label>
               <input
-                className="text-black"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="useremail"
                 type="email"
-                placeholder="Digite seu e-mail"
+                placeholder="E-mail"
                 onChange={(e) => setUserEmail(e.target.value)}
               />
             </div>
             <div className="flex flex-col m-3">
               <label htmlFor="">Senha:</label>
               <input
-                className="text-black"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="userpwd"
                 type="password"
-                placeholder="Digite sua senha"
+                placeholder="*******"
                 onChange={(e) => setUserPwd(e.target.value)}
               />
             </div>
             <div className="flex justify-center m-5">
-              <button className="border-2 rounded-md p-1">Fazer Login</button>
+              <button className="bg-transparent hover:bg-gray-200 text-black hover:text-white py-2 px-4 border border-gray-600 rounded">
+                Fazer Login
+              </button>
             </div>
           </form>
         </div>
