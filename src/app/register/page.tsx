@@ -33,6 +33,11 @@ export default function RegisterPage() {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.error(`Error code: ${errorCode}, message: ${errorMessage}`);
+          if (errorCode === "auth/email-already-in-use") {
+            window.alert(
+              `já existe usuario cadastrado para o e-mail ${userEmail}, por favor acesse sua conta.`
+            );
+          }
         });
     }
   };
@@ -94,6 +99,14 @@ export default function RegisterPage() {
                 <p className="text-center">
                   {userPwd === pwdConfirm ? "" : "As senhas não coincidem"}
                 </p>
+                <div className="flex flex-col">
+                  <p className="text-sm">A senha deve conter ao menos:</p>
+                  <ol className="mx-3 font-light text-sm">
+                    <li>um número.</li>
+                    <li>uma letra maiúscula.</li>
+                    <li>um caractere especial.[!@#%&]</li>
+                  </ol>
+                </div>
               </>
             )}
 
