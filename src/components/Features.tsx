@@ -29,8 +29,7 @@ export default function Features() {
               
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Finances app</p>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
-                iste dolor cupiditate blanditiis ratione.
+                Gerencie as suas Finanças de um jeito prático.
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
                 {features.map((feature) => (
