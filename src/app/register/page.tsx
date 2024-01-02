@@ -1,15 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { initFirebase } from "../../../firebase/fireBaseApp";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
 import PageHeader from "@/components/PageHeader";
 import PageFooter from "@/components/PageFooter";
 
-export default function RegisterPage() {
-  const app = initFirebase();
+const axios = require("axios");
 
+export default function RegisterPage() {
   const [userName, serUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPwd, setUserPwd] = useState("");
@@ -23,21 +20,16 @@ export default function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (handlePwd() === true) {
-      const auth = getAuth();
-      createUserWithEmailAndPassword(auth, userEmail, userPwd)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          window.alert(`${user.uid} criado com sucesso`);
+      axios
+        .post("http://projectfinance.ddns.net:4561/v1/signup", {
+          email: userEmail,
+          password: userPwd,
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error(`Error code: ${errorCode}, message: ${errorMessage}`);
-          if (errorCode === "auth/email-already-in-use") {
-            window.alert(
-              `já existe usuario cadastrado para o e-mail ${userEmail}, por favor acesse sua conta.`
-            );
-          }
+        .then((res: string) => {
+          console.log("criado usuario", res);
+        })
+        .catch((error: string) => {
+          console.error(error);
         });
     }
   };

@@ -51,7 +51,7 @@ export default function CreatorsPage() {
           </div>
           <div className="grid grid-cols-2 gap-28">
             {devs.map((dev) => (
-              <div className="border-2 rounded-lg p-5">
+              <div key={dev.name} className="border-2 rounded-lg p-5">
                 <div>
                   <img className="h-44 my-5" src={dev.photo} alt="" />
                 </div>

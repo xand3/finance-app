@@ -1,32 +1,19 @@
 "use client";
 
-import { initFirebase } from "../../../firebase/fireBaseApp";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 
 import PageHeader from "@/components/PageHeader";
 import PageFooter from "@/components/PageFooter";
 
 export default function LoginPage() {
-  const app = initFirebase();
+
 
   const [userEmail, setUserEmail] = useState("");
   const [userPwd, setUserPwd] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, userEmail, userPwd)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user.email);
-        window.alert(`usuario ${userEmail} logado`);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(`Error code: ${errorCode}, message: ${errorMessage}`);
-      });
+   
   };
 
   return (
