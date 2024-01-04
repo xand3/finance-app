@@ -1,19 +1,36 @@
 "use client";
 
 import { useState } from "react";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+
+import { User } from "@/types/User";
 
 import PageHeader from "@/components/PageHeader";
 import PageFooter from "@/components/PageFooter";
 
+import URL from "@/api/path"
+
 export default function LoginPage() {
-
-
   const [userEmail, setUserEmail] = useState("");
   const [userPwd, setUserPwd] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-   
+    axios
+      .post(`${URL}/v1/signin`, {
+        email: userEmail,
+        password: userPwd,
+      })
+      .then((res) => {
+        const { token } = res.data;
+        const user = jwtDecode<User>(token);
+        console.log(user.email);
+        console.log(user.password);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
