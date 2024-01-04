@@ -34,7 +34,7 @@ const devs = [
       {
         name: "GitHub",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-        link: "",
+        link: "https://github.com/MarilsonSouZa/",
       },
     ],
   },
