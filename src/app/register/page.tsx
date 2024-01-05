@@ -6,7 +6,7 @@ import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 import PageFooter from "@/components/PageFooter";
 
-import URL from "@/api/path"
+import URL from "@/api/path";
 
 export default function RegisterPage() {
   const [userName, serUserName] = useState("");
@@ -20,11 +20,11 @@ export default function RegisterPage() {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    
     e.preventDefault();
     if (handlePwd() === true) {
       axios
         .post(`${URL}/v1/signup`, {
+          name: userName,
           email: userEmail,
           password: userPwd,
         })
