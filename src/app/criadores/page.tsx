@@ -57,7 +57,7 @@ export default function CreatorsPage() {
                 </div>
                 <h2 className="font-bold">{dev.name}</h2>
                 <p className="text-sm mb-3">{dev.job}</p>
-                <p>{dev.exp}</p>
+                <p className="text-justify">{dev.exp}</p>
                 <div className="flex my-3">
                   {dev.socials.map((social) => (
                     <a className="mr-3" href={social.link} target="_blank">

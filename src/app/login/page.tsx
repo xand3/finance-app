@@ -70,7 +70,7 @@ export default function LoginPage() {
           </form>
           <div className="flex justify-center">
             <p className="">
-              Não possui conta? <a href="/register">registre-se aqui.</a>
+              Não possui conta? <a className="hover:text-gray-200" href="/register">registre-se aqui.</a>
             </p>
           </div>
         </div>
