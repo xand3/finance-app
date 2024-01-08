@@ -29,7 +29,7 @@ const devs = [
       {
         name: "Linkedin",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg",
-        link: "",
+        link: "https://www.linkedin.com/in/marilsonsouza/",
       },
       {
         name: "GitHub",
