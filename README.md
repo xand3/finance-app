@@ -15,38 +15,32 @@ Sistema para controle de finanças, para gerenciar dividas e receitas de forma s
 
 ## Desenvolvedores
 
-<div style="display: flex;">
-      <div style="display: flex; justify-content: space-around; width: 100%;">
-        <div>
-          <h1>Alexandre Bastos</h1>
-          <p>Desenvolvedor Front-end</p>
-          <div>
-            <a href="https://www.linkedin.com/in/alexandr3-bastos/" target="_blank">
-              <img
-                src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"
-                target="_blank">
-            </a>
-            <a href="https://www.github.com/xand3" target="_blank">
-              <img
-                src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"
-                target="_blank">
-            </a>
-          </div>
-        </div>
-        <div>
-          <h1>Marilson Souza</h1>
-          <p>Desenvolvedor Back-end</p>
-          <div>
-            <a href="https://www.linkedin.com/in/marilsonsouza/" target="_blank">
-              <img
-                src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"
-                target="_blank">
-            </a>
-            <a href="https://www.github.com/marilsonSouza" target="_blank">
-              <img
-                src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"
-                target="_blank">
-            </a>
-          </div>
-        </div>
-      </div>
+
+### Alexandre Bastos
+Desenvolvedor Front-end
+
+<a href="https://www.linkedin.com/in/alexandr3-bastos/" target="_blank">
+  <img
+    src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"
+    target="_blank">
+  </a>
+<a href="https://www.github.com/xand3" target="_blank">
+  <img
+    src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"
+    target="_blank">
+</a>
+
+### Marilson Souza
+Desenvolvedor Back-end
+
+<a href="https://www.linkedin.com/in/marilsonsouza/" target="_blank">
+<img
+  src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"
+  target="_blank">
+</a>
+<a href="https://www.github.com/marilsonSouza" target="_blank">
+  <img
+    src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"
+    target="_blank">
+</a>
+
