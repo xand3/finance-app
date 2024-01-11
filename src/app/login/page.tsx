@@ -3,14 +3,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 import { User } from "@/types/User";
 
 import PageHeader from "@/components/PageHeader";
 import PageFooter from "@/components/PageFooter";
 
-import URL from "@/api/path"
+import URL from "@/api/path";
 
 export default function LoginPage() {
   const [userEmail, setUserEmail] = useState("");
@@ -21,14 +21,18 @@ export default function LoginPage() {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${URL}/v1/signin`, {email: userEmail, password: userPwd});
+      const res = await axios.post(`${URL}/v1/signin`, {
+        email: userEmail,
+        password: userPwd,
+      });
       const { token } = res.data;
       const user = jwtDecode<User>(token);
-      localStorage.setItem('token', token);
-      router.push('/dashboard')
-    } catch(error) {
-      console.log(error)
-    };
+      console.log(jwtDecode(token))
+      localStorage.setItem("token", token);
+      router.push("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -68,7 +72,10 @@ export default function LoginPage() {
           </form>
           <div className="flex justify-center">
             <p className="">
-              Não possui conta? <a className="hover:text-gray-200" href="/register">registre-se aqui.</a>
+              Não possui conta?{" "}
+              <a className="hover:text-gray-200" href="/register">
+                registre-se aqui.
+              </a>
             </p>
           </div>
         </div>
