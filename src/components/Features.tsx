@@ -27,7 +27,7 @@ export default function Features() {
           <div className="lg:pr-8 lg:pt-4">
             <div className="lg:max-w-lg">
               
-              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Finances app</p>
+              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Finance App</p>
               <p className="mt-6 text-lg leading-8 text-gray-600">
                 Gerencie as suas Finanças de um jeito prático.
               </p>

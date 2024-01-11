@@ -11,7 +11,7 @@ const righteous = Righteous({
 });
 
 export const metadata: Metadata = {
-  title: "Finanças",
+  title: "Finance",
   description: "Gerenciador de Finanças",
 };
 
