@@ -30,7 +30,7 @@ export default function AppDropMenu() {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel className="absolute left-0 z-10 mt-5 flex -translate-x-1/2 px-4">
+        <Popover.Panel className="absolute -right-24 top-2 mt-5 flex -translate-x-1/2 px-4">
           <div className="w-1/2 max-w-sm flex-auto overflow-hidden rounded-lg bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
             <div className="">
               {solutions.map((item) => (

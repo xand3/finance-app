@@ -7,7 +7,7 @@ import { jwtDecode } from "jwt-decode";
 
 import { User } from "@/types/User";
 import AppHeader from "@/components/AppComponents/AppHeader";
-
+import AppSideMenu from "@/components/AppComponents/AppSideMenu";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -26,8 +26,9 @@ export default function Dashboard() {
   
 
   return (
-    <main>
+    <>
       <AppHeader/>
-    </main>
+      
+    </>
   )
 }

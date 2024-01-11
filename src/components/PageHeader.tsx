@@ -22,8 +22,7 @@ export default function PageHeader() {
         >
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.5 p-1.5">
-              
-              LOGO
+              <img width={30} src="/icons/small-logo.png" alt="logo Finances App" />
             </a>
           </div>
           <div className="flex lg:hidden">
