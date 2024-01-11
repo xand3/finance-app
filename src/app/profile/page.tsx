@@ -1,30 +1,47 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-import { jwtDecode } from "jwt-decode";
+import axios, { AxiosResponse } from "axios";
+import URL from "@/api/path";
+import { Profile } from "@/types/Profile";
 
-import { User } from "@/types/User";
+import AppHeader from "@/components/AppComponents/AppHeader";
 
 export default function ProfilePage() {
   const router = useRouter();
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if(token) {
-      const decodedUser = jwtDecode<User>(token);
-      setUser(decodedUser.email.toString()) 
+    const token = localStorage.getItem("token");
+    if (token) {
+      console.log("Usuario logado");
+      fetchUser();
     } else {
       window.alert("Usuario não autenticado");
-      router.push('/login');
+      router.push("/login");
     }
-  }, [])
+  }, []);
+
+  const fetchUser = async() => {
+    try {
+      const token = localStorage.getItem("token");
+      const res: AxiosResponse = await axios.get(`${URL}/v1/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      });
+      console.log(res);
+      setUser(res.data.name);
+    } catch(error) {
+      console.log(error)
+    }
+  };
 
   return (
-    <div>
-      <p>informações do usuario</p>
-    </div>
-  )
+    <>
+      <AppHeader/>
+    </>
+  );
 }

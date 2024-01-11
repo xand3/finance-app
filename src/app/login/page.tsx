@@ -26,8 +26,6 @@ export default function LoginPage() {
         password: userPwd,
       });
       const { token } = res.data;
-      const user = jwtDecode<User>(token);
-      console.log(jwtDecode(token))
       localStorage.setItem("token", token);
       router.push("/dashboard");
     } catch (error) {
