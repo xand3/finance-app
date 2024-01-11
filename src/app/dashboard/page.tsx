@@ -1,10 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react"
+
+import { jwtDecode } from "jwt-decode";
 
 import { User } from "@/types/User";
-import { jwtDecode } from "jwt-decode";
-import { useEffect, useState } from "react"
+import AppHeader from "@/components/AppComponents/AppHeader";
+
 
 export default function Dashboard() {
   const router = useRouter();
@@ -23,9 +26,8 @@ export default function Dashboard() {
   
 
   return (
-    <div>
-      <h1>exemplo</h1>
-      <p>{user}</p>
-    </div>
+    <main>
+      <AppHeader/>
+    </main>
   )
 }

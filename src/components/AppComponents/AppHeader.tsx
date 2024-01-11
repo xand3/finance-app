@@ -4,13 +4,15 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
+import AppDropMenu from "./AppDropMenu";
+
 const navigation = [
   { name: "Inicio", href: "/" },
-  { name: "Sobre", href: "/about" },
-  { name: "Desenvolvedores", href: "/developers" },
+  { name: "Sobre", href: "/sobre" },
+  { name: "Criadores", href: "/criadores" },
 ];
 
-export default function PageHeader() {
+export default function AppHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -20,40 +22,37 @@ export default function PageHeader() {
           className="flex items-center justify-between p-6 lg:px-8"
           aria-label="Global"
         >
-          <div className="flex lg:flex-1">
-            <a href="/" className="-m-1.5 p-1.5">
-              
-              LOGO
-            </a>
-          </div>
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
-          <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-lg leading-6 text-gray-900"
-              >
-                {item.name}
+          <div className="flex">
+            <div className="flex lg:flex-1 mr-5">
+              <a href="/" className="-m-1.5 p-1.5">
+                LOGO
               </a>
-            ))}
+            </div>
+            <div className="flex lg:hidden">
+              <button
+                type="button"
+                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                onClick={() => setMobileMenuOpen(true)}
+              >
+                <span className="sr-only">Open main menu</span>
+                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+              </button>
+            </div>
+            <div className="hidden lg:flex lg:gap-x-12">
+              {navigation.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-lg leading-6 text-gray-900"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
           </div>
+
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
-              href="/login"
-              className="text-md leading-6 text-gray-900"
-            >
-              Entrar <span aria-hidden="true">&rarr;</span>
-            </a>
+            <AppDropMenu/>
           </div>
         </nav>
         <Dialog
@@ -105,9 +104,7 @@ export default function PageHeader() {
         </Dialog>
       </header>
 
-      <div className="">
-
-      </div>
+      <div className=""></div>
     </div>
   );
 }

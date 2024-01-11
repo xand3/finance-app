@@ -40,7 +40,7 @@ const devs = [
   },
 ];
 
-export default function CreatorsPage() {
+export default function DevelopersPage() {
   return (
     <>
       <PageHeader />
