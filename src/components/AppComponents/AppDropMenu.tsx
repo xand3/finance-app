@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { ChevronDownIcon, ArrowLongLeftIcon } from "@heroicons/react/20/solid";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 import { useRouter } from "next/navigation";
 
@@ -42,7 +42,7 @@ export default function AppDropMenu() {
               </div>
               <div className="group relative flex gap-x-6 rounded-sm p-4 hover:bg-gray-50">
                 <div className="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                  <ArrowLongLeftIcon/>
+                  <img width={25} src="/icons/sair.png" alt="" />
                 </div>
                 <div>
                   <button

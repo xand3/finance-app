@@ -1,7 +1,7 @@
 const options = [
   { name: "Sobre", href: "/sobre" },
-  { name: "Criadores", href: "/criadores" },
-  { name: "Contato", href: "/criadores" },
+  { name: "Desenvolvedores", href: "/developers" },
+  { name: "Contato", href: "/developers" },
 ];
 
 export default function PageFooter() {
