@@ -1,3 +1,3 @@
-const URL: string =  "http://projectfinance.ddns.net:4561";
+const URL: string = "https://financeapp.up.railway.app/";
 
 export default URL;
