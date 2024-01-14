@@ -8,10 +8,13 @@ import URL from "@/api/path";
 import { Profile } from "@/types/Profile";
 
 import AppHeader from "@/components/AppComponents/AppHeader";
+import AppSideMenu from "@/components/AppComponents/AppSideMenu";
 
 export default function ProfilePage() {
   const router = useRouter();
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState<Profile>({
+    name: "", email: "", urlPhoto: ""
+  });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -32,8 +35,10 @@ export default function ProfilePage() {
           Authorization: `Bearer ${token}`
         },
       });
-      console.log(res);
-      setUser(res.data.name);
+
+      
+      setUser(res.data);
+      
     } catch(error) {
       console.log(error)
     }
@@ -42,6 +47,17 @@ export default function ProfilePage() {
   return (
     <>
       <AppHeader/>
+      <main className="flex justify-center mt-[90px] flex-col items-center">
+        <div>
+          <img width={200} src="/devs/dev.png" alt="" />
+        </div>
+        <div>
+          <p>Usuario: {user.name}</p>
+          <p>E-mail: {user.email}</p>
+
+        </div>
+      </main>
+      <AppSideMenu/>
     </>
   );
 }

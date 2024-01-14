@@ -26,7 +26,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <AppHeader />
+      <AppHeader/>
       <AppSideMenu/>
     </>
   );
