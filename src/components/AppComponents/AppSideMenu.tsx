@@ -1,4 +1,13 @@
-import { useState } from 'react';
+import { useState } from "react";
+
+import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/20/solid";
+import { Caveat } from "next/font/google";
+
+const caveat = Caveat({
+  style: "normal",
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export default function AppSideMenu() {
   const [isOpen, setIsOpen] = useState(true);
@@ -7,21 +16,25 @@ export default function AppSideMenu() {
     <div className="flex h-screen">
       <aside
         className={`${
-          isOpen ? 'w-64' : 'w-5.5'
-        } fixed z-10 top-0 bg-blue-500 h-full text-white transition-all duration-200`}
+          isOpen ? "w-64" : "w-20"
+        } mt-[79px] fixed z-10 top-0 bg-slate-200 h-full text-black`}
       >
-        <h2 className={`text-2xl p-4 ${isOpen ? 'block' : 'hidden'}`}>Sidebar</h2>
-        {/* Add your sidebar content here */}
-        <button
-          className="m-4 py-2 px-4 bg-blue-500 text-white rounded"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? 'Close Sidebar' : 'Open Sidebar'}
-        </button>
+        <div className="flex fle-col justify-around">
+          <h2 className={`text-3xl p-4 ${isOpen ? "block" : "hidden"} ${caveat.className}`}>
+            Finance App
+          </h2>
+          <button
+            className="m-2 py-2 px-5"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <ChevronLeftIcon className="text-black h-5 w-5" aria-hidden="true" /> : <ChevronRightIcon className="text-black h-5 w-5" aria-hidden="true" />}
+          </button>
+        </div>
+        
+        <div className={`pl-8 text-lg flex flex-col ${isOpen ? "block": "hidden"}`}>
+          <a href="#">Dashboard</a>
+        </div>
       </aside>
-      <main className="flex-1 bg-gray-200 p-4 ml-64">
-        {/* Add your main content here */}
-      </main>
     </div>
   );
 }

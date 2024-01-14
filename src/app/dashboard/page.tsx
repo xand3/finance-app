@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 import { jwtDecode } from "jwt-decode";
 
@@ -14,21 +14,20 @@ export default function Dashboard() {
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if(token) {
+    const token = localStorage.getItem("token");
+    if (token) {
       const decodedUser = jwtDecode<User>(token);
-      setUser(decodedUser.email.toString()) 
+      setUser(decodedUser.email.toString());
     } else {
       window.alert("Usuario não autenticado");
-      router.push('/login');
+      router.push("/login");
     }
-  }, [])
-  
+  }, []);
 
   return (
     <>
-      <AppHeader/>
-      
+      <AppHeader />
+      <AppSideMenu/>
     </>
-  )
+  );
 }

@@ -37,7 +37,7 @@ export default function AppDropMenu() {
                   <img width={25} src="/devs/dev.png" />
                 </div>
                 <div>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100">Perfil</a>
+                  <a href="/profile" className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100">Perfil</a>
                 </div>
               </div>
               <div className="group relative flex gap-x-6 rounded-sm p-4 hover:bg-gray-50">
