@@ -13,7 +13,7 @@ const options = [
   {
     name: "Dashboard",
     icon: "/icons/dashboard.png",
-    href: "/"
+    href: "/dashboard"
   },
   {
     name: "Dividas",
@@ -66,7 +66,7 @@ export default function AppSideMenu() {
           }`}
         >
           {options.map((option) => (
-            <div className="flex flex-start items-center ">
+            <div key={option.name}  className="flex flex-start items-center ">
               <img className="ml-6 mr-5" width={30} src={option.icon} alt="" />
               <a className="hover:bg-gray-100 rounded p-2" href={option.href}>{option.name}</a>
             </div>

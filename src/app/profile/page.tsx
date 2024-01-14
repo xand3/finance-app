@@ -9,11 +9,15 @@ import { Profile } from "@/types/Profile";
 
 import AppHeader from "@/components/AppComponents/AppHeader";
 import AppSideMenu from "@/components/AppComponents/AppSideMenu";
+import AppContainer from "@/components/AppComponents/AppContainer";
+
 
 export default function ProfilePage() {
   const router = useRouter();
   const [user, setUser] = useState<Profile>({
-    name: "", email: "", urlPhoto: ""
+    name: "",
+    email: "",
+    urlPhoto: "",
   });
 
   useEffect(() => {
@@ -27,37 +31,34 @@ export default function ProfilePage() {
     }
   }, []);
 
-  const fetchUser = async() => {
+  const fetchUser = async () => {
     try {
       const token = localStorage.getItem("token");
       const res: AxiosResponse = await axios.get(`${URL}/v1/profile`, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
       });
 
-      
       setUser(res.data);
-      
-    } catch(error) {
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <>
-      <AppHeader/>
-      <main className="flex justify-center mt-[90px] flex-col items-center">
+      <AppHeader />
+      <AppContainer myClasses="flex justify-center flex-col items-center">
         <div>
           <img width={200} src="/devs/dev.png" alt="" />
         </div>
         <div>
-          <p>Usuario: {user.name}</p>
+          <p>Usuário: {user.name}</p>
           <p>E-mail: {user.email}</p>
-
         </div>
-      </main>
-      <AppSideMenu/>
+      </AppContainer>
+      <AppSideMenu />
     </>
   );
 }
