@@ -11,7 +11,6 @@ import AppHeader from "@/components/AppComponents/AppHeader";
 import AppSideMenu from "@/components/AppComponents/AppSideMenu";
 import AppContainer from "@/components/AppComponents/AppContainer";
 
-
 export default function ProfilePage() {
   const router = useRouter();
   const [user, setUser] = useState<Profile>({
@@ -50,7 +49,7 @@ export default function ProfilePage() {
     <>
       <AppHeader />
       <AppContainer myClasses="flex justify-center flex-col items-center">
-        <div>
+        <div className="mb-5">
           <img width={200} src="/devs/dev.png" alt="" />
         </div>
         <div>
