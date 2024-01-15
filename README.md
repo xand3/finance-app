@@ -2,7 +2,7 @@
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
-## Sobre o Projeto
+# Sobre o Projeto
 
 Sistema para controle de finanças, para gerenciar dividas e receitas de forma simples.
 
@@ -13,8 +13,25 @@ Sistema para controle de finanças, para gerenciar dividas e receitas de forma s
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS_3-264de4?&style=for-the-badge&logo=css3&logoColor=white)
 
-## Desenvolvedores
+# Requisitos do projeto
+### REQUISITOS DO ÚSUARIO
+- O sistema deve conter um dashboard.
+- Deve ser possível filtrar as dividas pelo Credor selecionado.
 
+### REQUISITOS DO SISTEMA
+REQUISITOS FUNCIONAIS
+- [RF001] - Deve ser possível cadastrar usuários.
+- [RF002] - Deve ser possível cadastrar Pessoas(Credores ou Devedores).
+- [RF003] - Deve ser possível cadastrar dividas.
+- [RF004] - Deve ser possível cadastrar receitas.
+- [RF005] - deve ter um dashboard geral com a diferença entre receitas e despesas.
+- [RF006] - deve ser possível filtrar dividas ou receitas por Pessoas.
+
+REQUISITOS NÃO FUNCIONAIS
+- [RNF001] - O sistema deve ser executado em um nagevador de internet.
+- [RNF002] - Deve ser desenvolvido com React e Next.js.
+
+## Desenvolvedores
 
 ### Alexandre Bastos
 Desenvolvedor Front-end
