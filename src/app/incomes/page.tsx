@@ -4,14 +4,19 @@ import AppHeader from "@/components/AppComponents/AppHeader"
 import AppContainer from "@/components/AppComponents/AppContainer"
 import AppSideMenu from "@/components/AppComponents/AppSideMenu"
 
-export default function IncomesPage() {
-  return (
-    <>
-      <AppHeader/>
-      <AppSideMenu/>
-      <AppContainer myClasses="">
+import { useUserAuthenticaion } from "@/hooks/useUserAuthentication"
 
-      </AppContainer>
-    </>
-  )
+export default function IncomesPage() {
+
+  if (useUserAuthenticaion() === true) {
+    return (
+      <>
+        <AppHeader/>
+        <AppSideMenu/>
+        <AppContainer myClasses="">
+  
+        </AppContainer>
+      </>
+    )
+  }
 }

@@ -18,7 +18,7 @@ export default function LoginPage() {
   const [userPwd, setUserPwd] = useState("");
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -26,9 +26,12 @@ export default function LoginPage() {
         email: userEmail,
         password: userPwd,
       });
-      const { token } = res.data;
-      Cookies.set('token', token)
-      router.push("/dashboard");
+
+      if(res.status === 200) {
+        const { token } = res.data;
+        Cookies.set('token', token);
+        router.push("/dashboard");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +43,7 @@ export default function LoginPage() {
       <section className="flex justify-center items-center my-20">
         <div className="bg-white sm:shadow-lg shadow-none rounded px-16 pt-6 pb-8 mb-4 max-w-1/3 h-1/5">
           <h1 className="text-xl m-3 text-center">Acesse o sistema</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleLogin}>
             <div className="flex flex-col m-3">
               <label htmlFor="useremail">E-mail:</label>
               <input

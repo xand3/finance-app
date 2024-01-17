@@ -1,17 +1,17 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router"
-
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export function useUserAuthenticaion() {
   const router = useRouter();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+  try {
+    const token = Cookies.get("token");
     if (token) {
-      console.log("Usuario logado");
-    } else {
-      console.log("Usuario não autenticado");
-      router.push("/login");
+      return true;
     }
-  }, [])
+    router.push("/login");
+    return false;
+  } catch (error) {
+    console.log(error);
+  }
 }

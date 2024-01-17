@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 export default function AppDropMenu() {
@@ -9,7 +9,7 @@ export default function AppDropMenu() {
 
   const handleLogout = () => {
     router.push("/login");
-    localStorage.removeItem("token");
+    Cookies.remove("token");
   };
 
   return (
