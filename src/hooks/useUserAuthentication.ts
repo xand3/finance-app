@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router"
 
+
 export function useUserAuthenticaion() {
   const router = useRouter();
 

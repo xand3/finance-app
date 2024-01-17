@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
+import Cookies from "js-cookie"
 import { jwtDecode } from "jwt-decode";
 
 import { User } from "@/types/User";
@@ -14,7 +14,7 @@ export default function Dashboard() {
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = Cookies.get('token')
     if (token) {
       const decodedUser = jwtDecode<User>(token);
       setUser(decodedUser.email.toString());

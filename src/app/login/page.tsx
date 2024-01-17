@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie"
 
 import { User } from "@/types/User";
 
@@ -26,7 +27,7 @@ export default function LoginPage() {
         password: userPwd,
       });
       const { token } = res.data;
-      localStorage.setItem("token", token);
+      Cookies.set('token', token)
       router.push("/dashboard");
     } catch (error) {
       console.log(error);

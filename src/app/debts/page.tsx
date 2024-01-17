@@ -1,13 +1,13 @@
 "use client"
 
-import PageHeader from "@/components/PageHeader";
+import AppHeader from "@/components/AppComponents/AppHeader";
 import AppContainer from "@/components/AppComponents/AppContainer";
 import AppSideMenu from "@/components/AppComponents/AppSideMenu";
 
 export default function DebtsPage() {
   return (
     <>
-      <PageHeader />
+      <AppHeader />
       <AppSideMenu/>
       <AppContainer myClasses="">
       
