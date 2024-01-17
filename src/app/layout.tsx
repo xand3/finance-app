@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Righteous, Caveat } from "next/font/google";
+import { Inter, Righteous } from "next/font/google";
 
 import "./globals.css";
 

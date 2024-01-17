@@ -1,6 +1,6 @@
 type BoxProps = {
-  children: React.ReactNode;
-  myClasses: string;
+  children?: React.ReactNode;
+  myClasses?: string;
 }
 
 export default function AppContainer({children, myClasses}: BoxProps) {

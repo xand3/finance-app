@@ -18,12 +18,12 @@ const options = [
   {
     name: "Dividas",
     icon: "/icons/divida.png",
-    href: "/"
+    href: "/debts"
   },
   {
     name: "Receitas",
     icon: "/icons/receita.png",
-    href: "/"
+    href: "/incomes"
   }
 ]
 
