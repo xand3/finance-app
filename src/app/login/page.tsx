@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie"
+import Cookies from "js-cookie";
 
 import { User } from "@/types/User";
 
@@ -26,11 +26,8 @@ export default function LoginPage() {
         email: userEmail,
         password: userPwd,
       });
-
-      if(res.status === 200) {
-        const { token } = res.data;
-        Cookies.set('token', token);
-        router.push("/dashboard");
+      if (res.status === 200) {
+        const token = Cookies.get("token");
       }
     } catch (error) {
       console.log(error);

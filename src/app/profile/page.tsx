@@ -21,13 +21,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
-      console.log("Usuario logado");
-      fetchUser();
-    } else {
-      window.alert("Usuario não autenticado");
-      router.push("/login");
-    }
+    fetchUser();
   }, []);
 
   const fetchUser = async () => {
@@ -36,10 +30,10 @@ export default function ProfilePage() {
       const res: AxiosResponse = await axios.get(`${URL}/v1/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
-        },
+        }, withCredentials: true,
       });
-
-      setUser(res.data);
+      
+      console.log(document.cookie)
     } catch (error) {
       console.log(error);
     }
