@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import AppHeader from "@/components/AppComponents/AppHeader";
 import AppSideMenu from "@/components/AppComponents/AppSideMenu";
+import AppContainer from "@/components/AppComponents/AppContainer";
 
 function Dashboard() {
   const router = useRouter();
@@ -13,6 +14,9 @@ function Dashboard() {
   return (
     <>
       <AppHeader />
+      <AppContainer myClasses="">
+
+      </AppContainer>
       <AppSideMenu />
     </>
   );

@@ -14,9 +14,10 @@ import PageFooter from "@/components/PageFooter";
 import URL from "@/api/path";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [userEmail, setUserEmail] = useState("");
   const [userPwd, setUserPwd] = useState("");
-  const router = useRouter();
+  const [error, setError] = useState("");  
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,12 +26,18 @@ export default function LoginPage() {
       const res = await axios.post(`${URL}/v1/signin`, {
         email: userEmail,
         password: userPwd,
-      });
-      if (res.status === 200) {
-        const token = Cookies.get("token");
-      }
+      })
+      .then((res) => {
+        if(res.status === 200) {
+          const token: string = res.data.token;
+          Cookies.set("token", token);
+          router.push('/dashboard');
+        } else {
+          
+        }
+      })
     } catch (error) {
-      console.log(error);
+      console.error(error)
     }
   };
 
