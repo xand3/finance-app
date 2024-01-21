@@ -3,10 +3,10 @@ import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 type Props = {
-  text: string;
+  Boxtext: string;
 }
 
-export default function DialogBox({text}: Props) {
+export default function DialogBox({Boxtext}: Props) {
   const [open, setOpen] = useState(true);
 
   const cancelButtonRef = useRef(null);
@@ -50,7 +50,7 @@ export default function DialogBox({text}: Props) {
                         as="h3"
                         className="text-base font-semibold leading-6 text-gray-900"
                       >
-                        {text}
+                        {Boxtext}
                       </Dialog.Title>
                     </div>
                   </div>

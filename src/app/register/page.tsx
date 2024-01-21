@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
 
 import PageHeader from "@/components/PageHeader";
 import PageFooter from "@/components/PageFooter";
+import DialogBox from "@/components/DialogBox";
 
 import URL from "@/api/path";
 
@@ -14,6 +16,7 @@ export default function RegisterPage() {
   const [userPwd, setUserPwd] = useState("");
   const [pwdConfirm, setPwdConfirm] = useState("");
   const [pwdFocus, setPwdFocus] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handlePwd = () => {
     return userPwd === pwdConfirm ? true : false;
@@ -22,21 +25,25 @@ export default function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (handlePwd() === true) {
-      axios
-        .post(`${URL}/v1/signup`, {
-          name: userName,
-          email: userEmail,
-          password: userPwd,
-        })
-        .then((res: AxiosResponse) => {
-          if (res.status === 200) {
-            console.log(res.data);
-            window.alert("Usuario criado com Sucesso");
-          }
-        })
-        .catch((error: any) => {
-          console.error(error);
-        });
+      try {
+        axios
+          .post(`${URL}/v1/signup`, {
+            name: userName,
+            email: userEmail,
+            password: userPwd,
+          })
+          .then((res: AxiosResponse) => {
+            if (res.status === 200) {
+              console.log(res.data);
+            } else {
+              console.log(res)
+              
+            }
+          });
+      } catch (error) {
+        console.log(error)
+        setMessage(error.response.data.detail);
+      }
     }
   };
 
@@ -46,6 +53,7 @@ export default function RegisterPage() {
       <section className="flex justify-center items-center my-16">
         <div className="bg-white shadow-none rounded px-16 pt-6 pb-8 mb-4 max-w-1/3 sm:shadow-lg">
           <h1 className="text-xl m-3 text-center">Faça seu cadastro</h1>
+          {message && <DialogBox Boxtext={message}/>}
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col m-3">
               <label htmlFor="username">Nome:</label>
@@ -55,7 +63,10 @@ export default function RegisterPage() {
                 id="username"
                 type="text"
                 placeholder="Nome"
-                onChange={(e) => serUserName(e.target.value)}
+                onChange={(e) => {
+                  serUserName(e.target.value);
+                  setMessage("");
+                }}
               />
             </div>
             <div className="flex flex-col m-3">
@@ -107,7 +118,9 @@ export default function RegisterPage() {
                 </div>
               </>
             )}
-
+            <div>
+              <p>Já tem uma conta? Faça login <Link className="hover:text-gray-200" href="/login">aqui.</Link></p>
+            </div>
             <div className="flex justify-center m-5">
               <button className="bg-transparent hover:bg-gray-200 text-black hover:text-white py-2 px-4 border border-gray-600 rounded">
                 Criar conta

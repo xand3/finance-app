@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
@@ -15,27 +16,30 @@ export default function LoginPage() {
   const router = useRouter();
   const [userEmail, setUserEmail] = useState("");
   const [userPwd, setUserPwd] = useState("");
-  const [error, setError] = useState("");  
+  const [error, setError] = useState("");
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${URL}/v1/signin`, {
-        email: userEmail,
-        password: userPwd,
-      })
-      .then((res) => {
-        if(res.status === 200) {
-          const token: string = res.data.token;
-          Cookies.set("token", token);
-          router.push('/dashboard');
-        } else {
-          setError("Ocorreu um erro ao fazer login, por favor tente novamente");
-        }
-      })
+      const res = await axios
+        .post(`${URL}/v1/signin`, {
+          email: userEmail,
+          password: userPwd,
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            const token: string = res.data.token;
+            Cookies.set("token", token);
+            router.push("/dashboard");
+          } else {
+            setError(
+              "Ocorreu um erro ao fazer login, por favor tente novamente"
+            );
+          }
+        });
     } catch (error) {
-      setError(error.response.data.detail)
+      setError(error.response.data.detail);
     }
   };
 
@@ -45,9 +49,7 @@ export default function LoginPage() {
       <section className="flex justify-center items-center my-20">
         <div className="bg-white sm:shadow-lg shadow-none rounded px-16 pt-6 pb-8 mb-4 max-w-1/3 h-1/5">
           <h1 className="text-xl m-3 text-center">Acesse o sistema</h1>
-            {error && (
-              <DialogBox text={error}/>
-            )}
+          {error && <DialogBox Boxtext={error} />}
           <form onSubmit={handleLogin}>
             <div className="flex flex-col m-3">
               <label htmlFor="useremail">E-mail:</label>
@@ -83,9 +85,9 @@ export default function LoginPage() {
           <div className="flex justify-center">
             <p className="">
               Não possui conta?{" "}
-              <a className="hover:text-gray-200" href="/register">
+              <Link className="hover:text-gray-200" href="/register">
                 registre-se aqui.
-              </a>
+              </Link>
             </p>
           </div>
         </div>
