@@ -18,13 +18,13 @@ export function useUserAuthenticaion() {
         .then((res: AxiosResponse) => {
           console.log(res);
           if(res.status === 200) {
-            return true
+            return true;
           }
         });
     } else {
       router.push("/login");
       Cookies.remove("token");
-      return false
+      return false;
     }
   } catch (error) {
     console.log(error);

@@ -6,7 +6,7 @@ const options = [
 
 export default function PageFooter() {
   return (
-    <footer className="flex justify-center border-t">
+    <footer className="flex justify-center border-t ">
       <div className="flex flex-col">
         <div className="flex justify-around my-5">
           {options.map((item) => (

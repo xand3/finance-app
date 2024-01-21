@@ -20,7 +20,6 @@ export default function ProfilePage() {
   });
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     fetchUser();
   }, []);
 
@@ -32,8 +31,6 @@ export default function ProfilePage() {
           Authorization: `Bearer ${token}`,
         }, withCredentials: true,
       });
-      
-      console.log(document.cookie)
     } catch (error) {
       console.log(error);
     }

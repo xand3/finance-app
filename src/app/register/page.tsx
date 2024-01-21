@@ -29,8 +29,10 @@ export default function RegisterPage() {
           password: userPwd,
         })
         .then((res: AxiosResponse) => {
-          window.alert("criado usuario");
-          console.log(res);
+          if (res.status === 200) {
+            console.log(res.data);
+            window.alert("Usuario criado com Sucesso");
+          }
         })
         .catch((error: any) => {
           console.error(error);

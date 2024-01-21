@@ -1,15 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
-import { jwtDecode } from "jwt-decode";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
-import { User } from "@/types/User";
-
 import PageHeader from "@/components/PageHeader";
 import PageFooter from "@/components/PageFooter";
+import DialogBox from "@/components/DialogBox";
 
 import URL from "@/api/path";
 
@@ -33,11 +31,11 @@ export default function LoginPage() {
           Cookies.set("token", token);
           router.push('/dashboard');
         } else {
-          
+          setError("Ocorreu um erro ao fazer login, por favor tente novamente");
         }
       })
     } catch (error) {
-      console.error(error)
+      setError(error.response.data.detail)
     }
   };
 
@@ -47,6 +45,9 @@ export default function LoginPage() {
       <section className="flex justify-center items-center my-20">
         <div className="bg-white sm:shadow-lg shadow-none rounded px-16 pt-6 pb-8 mb-4 max-w-1/3 h-1/5">
           <h1 className="text-xl m-3 text-center">Acesse o sistema</h1>
+            {error && (
+              <DialogBox text={error}/>
+            )}
           <form onSubmit={handleLogin}>
             <div className="flex flex-col m-3">
               <label htmlFor="useremail">E-mail:</label>
@@ -56,7 +57,10 @@ export default function LoginPage() {
                 id="useremail"
                 type="email"
                 placeholder="E-mail"
-                onChange={(e) => setUserEmail(e.target.value)}
+                onChange={(e) => {
+                  setUserEmail(e.target.value);
+                  setError("");
+                }}
               />
             </div>
             <div className="flex flex-col m-3">
