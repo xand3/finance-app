@@ -12,12 +12,7 @@ import { Person } from "@/types/Person";
 import URL from "@/api/path";
 
 function Persons() {
-  const [persons, setPersons] = useState<Person[]>([
-    {
-      description: "teste",
-      id: "12312312",
-    },
-  ]);
+  const [persons, setPersons] = useState<Person[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -46,24 +41,24 @@ function Persons() {
   return (
     <>
       <AppHeader />
-      <AppContainer myClasses="">
+      <AppContainer myClasses="pt-3">
         <div className="flex justify-between mb-5 items-center">
-          <h1 className="text-3xl ml-10">Credores / Devedores</h1>
-          <div className="mr-10">
+          <h1 className="text-3xl ml-12">Credores / Devedores</h1>
+          <div className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border">
             <button>Adicionar</button>
           </div>
         </div>
-        <div className="shadow-md sm:rounded-lg ml-10 mr-10">
-          <table className="w-full text-sm text-gray-500">
-            <thead className="text-xs uppercase bg-gray-400 text-black">
-              <tr>
-                <th scope="col" className="px-6 py-3 text-left">
+        <div className="shadow-md ml-10 mr-10 rounded-lg">
+          <table className="min-w-full text-gray-500">
+            <thead className="uppercase bg-gray-400 text-black">
+              <tr className="text-sm">
+                <th scope="col" className="py-3 pl-3 text-left w-auto">
                   Nome
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="w-20">
                   editar
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="w-20">
                   Excluir
                 </th>
               </tr>
@@ -76,17 +71,17 @@ function Persons() {
                 >
                   <td
                     scope="row"
-                    className="text-left px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                    className="pl-3 py-3 text-left font-medium text-gray-900 whitespace-nowrap"
                   >
                     {person.description}
                   </td>
-                  <td className="px-6 py-4">
-                    <button>
+                  <td className="pl-5">
+                    <button className="flex justify-center items-center rounded-md hover:bg-slate-300 px-3 py-2">
                       <img width={20} src="/icons/editar.png" alt="" />
                     </button>
                   </td>
-                  <td className="px-6 py-4">
-                    <button>
+                  <td className="pl-5">
+                    <button className="flex justify-center items-center rounded-md hover:bg-slate-300 px-3 py-2">
                       <img width={20} src="icons/excluir.png" alt="" />
                     </button>
                   </td>
