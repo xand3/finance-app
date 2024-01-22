@@ -47,39 +47,49 @@ function Persons() {
     <>
       <AppHeader />
       <AppContainer myClasses="">
-        <div className="flex justify-between mb-5">
+        <div className="flex justify-between mb-5 items-center">
           <h1 className="text-3xl ml-10">Credores / Devedores</h1>
           <div className="mr-10">
             <button>Adicionar</button>
           </div>
         </div>
-        <div className="flex justify-center">
-          <table className="w-screen mr-10 ml-10 bg-slate-300">
-            <thead className="">
-              <tr className="">
-                <th className="p-2 text-left">Nome</th>
-                <th className="p-2">Editar</th>
-                <th className="p-2">Excluir</th>
+        <div className="shadow-md sm:rounded-lg ml-10 mr-10">
+          <table className="w-full text-sm text-gray-500">
+            <thead className="text-xs uppercase bg-gray-400 text-black">
+              <tr>
+                <th scope="col" className="px-6 py-3 text-left">
+                  Nome
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  editar
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Excluir
+                </th>
               </tr>
             </thead>
             <tbody>
               {persons.map((person) => (
                 <tr
                   key={person.id}
-                  className="border-solid border-2 border-slate-600 bg-zinc-100"
+                  className="border-b bg-slate-100 border-gray-700 hover:bg-gray-50"
                 >
-                  <td className="flex m-1">
-                    <div className="flex mr-12 flex-col">
-                      <div className="font-bold">{person.description}</div>
-                    </div>
+                  <td
+                    scope="row"
+                    className="text-left px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    {person.description}
                   </td>
-
-                  <td className="">
-                    <div>
+                  <td className="px-6 py-4">
+                    <button>
                       <img width={20} src="/icons/editar.png" alt="" />
-                    </div>
+                    </button>
                   </td>
-                  <td className="text-center">excluir</td>
+                  <td className="px-6 py-4">
+                    <button>
+                      <img width={20} src="icons/excluir.png" alt="" />
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
