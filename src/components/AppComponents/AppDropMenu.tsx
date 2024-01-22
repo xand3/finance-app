@@ -16,7 +16,7 @@ export default function AppDropMenu() {
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
         <div>
-          <img width={25} src="/devs/dev.png" alt="" />
+          <img width={25} src="/devs/dev.png" alt="usuario" />
         </div>
         <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
       </Popover.Button>
