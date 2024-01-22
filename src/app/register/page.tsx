@@ -36,8 +36,7 @@ export default function RegisterPage() {
             if (res.status === 200) {
               console.log(res.data);
             } else {
-              console.log(res)
-              
+              console.log(res);
             }
           });
       } catch (error) {

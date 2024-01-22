@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
-import axios, { AxiosResponse } from "axios";
+import Cookies from "js-cookie";
+import Axios, { AxiosResponse } from "axios";
 import URL from "@/api/path";
 import { Profile } from "@/types/Profile";
 
@@ -25,8 +25,8 @@ export default function ProfilePage() {
 
   const fetchUser = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const res: AxiosResponse = await axios.get(`${URL}/v1/profile`, {
+      const token = Cookies.get("token");
+      const res: AxiosResponse = await Axios.get(`${URL}/v1/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         }, withCredentials: true,
