@@ -35,7 +35,7 @@ export default function AppSideMenu() {
       <aside
         className={`${
           isOpen ? "min-w-1/4" : "w-20"
-        } mt-[79px] fixed z-10 top-0 bg-slate-200 h-screen text-black`}
+        } mt-[79px] fixed z-10 top-0 bg-slate-200 h-screen text-black `}
       >
         <div className="ml-3 flex fle-col justify-around">
           <h2

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -12,16 +12,40 @@ import { Person } from "@/types/Person";
 import URL from "@/api/path";
 
 function Persons() {
-  const [persons, setPersons] = useState<Person[]>([]);
+  const [persons, setPersons] = useState<Person[]>([
+    {description: "Nubank", id: "dasdasdasd"},
+    {description: "empresa", id: "231231"}
+  ]);
   const [error, setError] = useState("");
-
+  const [showBox, setShowBox] = useState(false);
+  const token = Cookies.get("token");
   useEffect(() => {
     fetchPersons();
   }, []);
 
+  const handleAddButton = () => {
+    setShowBox(true);
+  }
+
+  const handleBtnDelete = async (id: string) => {
+    // setPersons(persons.filter(person => person.id !== id));
+    try {
+      const res = await axios.delete(`${URL}/v1/person/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      });
+      if(res.status === 200) {
+        console.log(res.data);
+        window.alert("registro excloido com sucesso")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const fetchPersons = async () => {
     try {
-      const token = Cookies.get("token");
       const res = await axios.get(`${URL}/v1/persons`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -45,7 +69,7 @@ function Persons() {
         <div className="flex justify-between mb-5 items-center">
           <h1 className="text-3xl ml-12">Credores / Devedores</h1>
           <div className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border">
-            <button>Adicionar</button>
+            <button onClick={handleAddButton}>Adicionar</button>
           </div>
         </div>
         <div className="shadow-md ml-10 mr-10 rounded-lg">
@@ -81,7 +105,7 @@ function Persons() {
                     </button>
                   </td>
                   <td className="pl-5">
-                    <button className="flex justify-center items-center rounded-md hover:bg-slate-300 px-3 py-2">
+                    <button onClick={() => handleBtnDelete(person.id)} className="flex justify-center items-center rounded-md hover:bg-red-500 px-3 py-2">
                       <img width={20} src="icons/excluir.png" alt="" />
                     </button>
                   </td>
