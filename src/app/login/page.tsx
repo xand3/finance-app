@@ -77,7 +77,7 @@ export default function LoginPage() {
               />
             </div>
             <div className="flex justify-around m-5">
-              <button className="bg-transparent hover:bg-gray-200 text-black hover:text-white py-2 px-4 border border-gray-600 rounded">
+              <button type="submit" className="bg-transparent hover:bg-gray-200 text-black hover:text-white py-2 px-4 border border-gray-600 rounded">
                 Fazer Login
               </button>
             </div>
