@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import Axios, { AxiosResponse } from "axios";
+import axios, { Axios, AxiosResponse } from "axios";
 import URL from "@/api/path";
 import { Profile } from "@/types/Profile";
 
@@ -26,11 +26,18 @@ export default function ProfilePage() {
   const fetchUser = async () => {
     try {
       const token = Cookies.get("token");
-      const res: AxiosResponse = await Axios.get(`${URL}/v1/profile`, {
+      axios.get(`${URL}/v1/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
-        }, withCredentials: true,
-      });
+        }
+      }).then((res: AxiosResponse) => {
+        if(res.status === 200) {
+          console.log(res)
+          setUser(res.data);
+        } else {
+          console.log(res);
+        }
+      })
     } catch (error) {
       console.log(error);
     }

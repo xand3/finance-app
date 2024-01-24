@@ -20,8 +20,7 @@ export default function AppBoxPerson({ isOpen, setOpen }: Props) {
         .post(
           `${URL}/v1/person`,
           {
-            description: `${person}`,
-            create_at: "data",
+            description: `${person}`
           },
           {
             headers: {
@@ -32,7 +31,7 @@ export default function AppBoxPerson({ isOpen, setOpen }: Props) {
         .then((res) => {
           if (res.status === 201) {
             console.log("registro adicionado com sucesso");
-            setOpen(!open)
+            setOpen(!open);
           } else {
             console.log(res);
           }
