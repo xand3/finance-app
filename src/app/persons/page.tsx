@@ -60,25 +60,23 @@ function Persons() {
     }
   };
 
-  const fetchPersons = async () => {
-    try {
-      const res = await axios
-        .get(`${URL}/v1/persons`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            console.log(res.data);
-            setPersons(res.data);
-          } else {
-            setError(res.data.detail);
-          }
-        });
-    } catch (error) {
-      console.log(error);
-    }
+  const fetchPersons = () => {
+    axios
+      .get(`${URL}/v1/persons`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((res) => {
+        if (res.status === 200) {
+          setPersons(res.data);
+        }
+      }).catch((error) => {
+        if(error.response.status === 404) {
+          setError(error.response.data.detail);
+        } else {
+          setError("Um erro inesperado aconteceu, por favor tente novamente");
+        }
+      })
   };
 
   return (
@@ -108,7 +106,12 @@ function Persons() {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <AppBoxPerson prevPersons={filteredPersons} setPersons={setPersons} isOpen={open} setOpen={setOpen} />
+        <AppBoxPerson
+          prevPersons={filteredPersons}
+          setPersons={setPersons}
+          isOpen={open}
+          setOpen={setOpen}
+        />
         <div className="shadow-md ml-10 mr-10 rounded-lg">
           <table className="min-w-full text-gray-500 mb-10">
             <thead className="uppercase bg-gray-400 text-black">
@@ -124,6 +127,7 @@ function Persons() {
                 </th>
               </tr>
             </thead>
+            {error && filteredPersons.length === 0 && <div className="flex justify-center items-center m-3">{error}</div>}
             <tbody>
               {filteredPersons.map((person) => (
                 <tr

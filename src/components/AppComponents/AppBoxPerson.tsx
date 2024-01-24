@@ -12,30 +12,34 @@ type Props = {
   prevPersons: Person[];
 };
 
-
-export default function AppBoxPerson({ isOpen, setOpen, setPersons, prevPersons }: Props) {
+export default function AppBoxPerson({
+  isOpen,
+  setOpen,
+  setPersons,
+  prevPersons,
+}: Props) {
   const [person, setPerson] = useState<string>("");
 
-  const handleAddPerson =  (e: React.FormEvent<HTMLFormElement>) => {
+  const handleAddPerson = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const token = Cookies.get("token");
-        axios
+      axios
         .post(
           `${URL}/v1/person`,
           {
-            description: `${person}`
+            description: `${person}`,
           },
           {
             headers: {
               Authorization: `Bearer ${token}`,
-            }
+            },
           }
         )
         .then((res) => {
           if (res.status === 201) {
             setOpen(!open);
-            setPersons([...prevPersons, res.data.detail[0]])
+            setPersons([...prevPersons, res.data.detail[0]]);
           } else {
             console.log(res);
           }
@@ -70,7 +74,10 @@ export default function AppBoxPerson({ isOpen, setOpen, setPersons, prevPersons 
             >
               FECHAR
             </button>
-            <button type="submit" className=" bg-slate-200 p-3 rounded-md hover:bg-slate-100 border">
+            <button
+              type="submit"
+              className=" bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
+            >
               ADICIONAR
             </button>
           </div>
