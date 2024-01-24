@@ -4,17 +4,17 @@ const features = [
   {
     name: 'Intuitivo.',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      'Com uma interface fácil de usar e intuitiva o Finance App permite que você navegue e compreenda as suas funcionalidades facilmente.',
     icon: CheckIcon,
   },
   {
     name: 'Prático.',
-    description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+    description: 'Gerenciamento de finanças de maneira simples, proporcionando uma visão clara de suas receitas e dívidas.',
     icon: CheckIcon,
   },
   {
     name: 'Rápido.',
-    description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
+    description: 'Navegue de forma rápida entre todas as funcionalidades do sistema.',
     icon: CheckIcon,
   },
 ]

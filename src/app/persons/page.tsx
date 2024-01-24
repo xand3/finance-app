@@ -42,7 +42,6 @@ function Persons() {
   }, [search, persons]);
 
   const handleDeletePerson = (id: string) => {
-    // setPersons(persons.filter(person => person.id !== id));
     try {
       axios
         .delete(`${URL}/v1/person/${id}`, {
@@ -100,7 +99,7 @@ function Persons() {
             </button>
           </div>
         </div>
-        <div>
+        <div className="ml-12">
           <label>Buscar:</label>
           <input
             className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
