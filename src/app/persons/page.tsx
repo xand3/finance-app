@@ -14,10 +14,7 @@ import { Person } from "@/types/Person";
 import URL from "@/api/path";
 
 function Persons() {
-  const [persons, setPersons] = useState<Person[]>([
-    { description: "Nubank", id: "dasdasdasd" },
-    { description: "empresa", id: "231231" },
-  ]);
+  const [persons, setPersons] = useState<Person[]>([]);
   const [error, setError] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
 
@@ -26,20 +23,23 @@ function Persons() {
     fetchPersons();
   }, []);
 
-
-  const handleBtnDelete = async (id: string) => {
+  const handleDeletePerson = (id: string) => {
     // setPersons(persons.filter(person => person.id !== id));
     try {
-      const res = await axios.delete(`${URL}/v1/person/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        withCredentials: false,
-      });
-      if (res.status === 200) {
-        console.log(res.data);
-        window.alert("registro excluido com sucesso");
-      }
+      axios
+        .delete(`${URL}/v1/person/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log("registro excluido");
+            setPersons(persons.filter(person => person.id !== id));
+          } else {
+            console.log(res.data);
+          }
+        });
     } catch (error) {
       console.log(error);
     }
@@ -47,18 +47,20 @@ function Persons() {
 
   const fetchPersons = async () => {
     try {
-      const res = await axios.get(`${URL}/v1/persons`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        withCredentials: false,
-      });
-      if (res.status === 200) {
-        console.log(res.data);
-        setPersons(res.data);
-      } else {
-        setError(res.data.detail);
-      }
+      const res = await axios
+        .get(`${URL}/v1/persons`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res.data);
+            setPersons(res.data);
+          } else {
+            setError(res.data.detail);
+          }
+        });
     } catch (error) {
       console.log(error);
     }
@@ -71,10 +73,16 @@ function Persons() {
         <div className="flex justify-between mb-5 items-center">
           <h1 className="text-3xl ml-12">Credores / Devedores</h1>
           <div className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border">
-            <button onClick={() => {setOpen(!open)}}>Adicionar</button>
+            <button
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
+              Adicionar
+            </button>
           </div>
         </div>
-        <AppBoxPerson isOpen={open} setOpen={setOpen}/>
+        <AppBoxPerson isOpen={open} setOpen={setOpen} />
         <div className="shadow-md ml-10 mr-10 rounded-lg">
           <table className="min-w-full text-gray-500 mb-10">
             <thead className="uppercase bg-gray-400 text-black">
@@ -109,7 +117,7 @@ function Persons() {
                   </td>
                   <td className="pl-5">
                     <button
-                      onClick={() => handleBtnDelete(person.id)}
+                      onClick={() => handleDeletePerson(person.id)}
                       className="flex justify-center items-center rounded-md hover:bg-red-500 px-3 py-2"
                     >
                       <img width={20} src="icons/excluir.png" alt="" />

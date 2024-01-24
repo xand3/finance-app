@@ -12,11 +12,11 @@ type Props = {
 export default function AppBoxPerson({ isOpen, setOpen }: Props) {
   const [person, setPerson] = useState<string>("");
 
-  const handleAddPerson = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleAddPerson =  (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const token = Cookies.get("token");
-      const res = await axios
+        axios
         .post(
           `${URL}/v1/person`,
           {
@@ -31,7 +31,8 @@ export default function AppBoxPerson({ isOpen, setOpen }: Props) {
         )
         .then((res) => {
           if (res.status === 201) {
-            console.log("registro adicionando com sucesso");
+            console.log("registro adicionado com sucesso");
+            setOpen(!open)
           } else {
             console.log(res);
           }
@@ -46,11 +47,11 @@ export default function AppBoxPerson({ isOpen, setOpen }: Props) {
       <div className="fixed top-0 left-0 right-0 bottom-0 m-auto w-2/3 h-2/3 bg-slate-300 opacity-80 rounded-lg">
         <form onSubmit={handleAddPerson}>
           <div className="flex flex-col">
-            <label htmlFor="personEmail">Nome:</label>
+            <label htmlFor="person">Nome:</label>
             <input
               required
               className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="personEmail"
+              id="person"
               type="text"
               placeholder=""
               onChange={(e) => {

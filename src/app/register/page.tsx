@@ -11,18 +11,18 @@ import DialogBox from "@/components/DialogBox";
 import URL from "@/api/path";
 
 export default function RegisterPage() {
-  const [userName, serUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPwd, setUserPwd] = useState("");
-  const [pwdConfirm, setPwdConfirm] = useState("");
-  const [pwdFocus, setPwdFocus] = useState(false);
-  const [message, setMessage] = useState("");
+  const [userName, serUserName] = useState<string>("");
+  const [userEmail, setUserEmail] = useState<string>("");
+  const [userPwd, setUserPwd] = useState<string>("");
+  const [pwdConfirm, setPwdConfirm] = useState<string>("");
+  const [pwdFocus, setPwdFocus] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
 
   const handlePwd = () => {
     return userPwd === pwdConfirm ? true : false;
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (handlePwd() === true) {
       try {
