@@ -5,7 +5,7 @@ type BoxProps = {
 
 export default function AppContainer({children, myClasses}: BoxProps) {
   return (
-    <main className={`mt-[90px] ml-[90px] ${myClasses}`}>
+    <main className={`mt-[90px] ${myClasses}`}>
       {children}
     </main>
   )

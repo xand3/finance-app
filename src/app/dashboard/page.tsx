@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 import  Axios from "axios";
 
 import AppHeader from "@/components/AppComponents/AppHeader";
-import AppSideMenu from "@/components/AppComponents/AppSideMenu";
 import AppContainer from "@/components/AppComponents/AppContainer";
 import URL from "@/api/path";
 
@@ -40,7 +39,6 @@ function Dashboard() {
       <AppContainer myClasses="">
 
       </AppContainer>
-      <AppSideMenu />
     </>
   );
 }

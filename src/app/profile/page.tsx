@@ -8,7 +8,6 @@ import URL from "@/api/path";
 import { Profile } from "@/types/Profile";
 
 import AppHeader from "@/components/AppComponents/AppHeader";
-import AppSideMenu from "@/components/AppComponents/AppSideMenu";
 import AppContainer from "@/components/AppComponents/AppContainer";
 
 export default function ProfilePage() {
@@ -55,7 +54,6 @@ export default function ProfilePage() {
           <p>E-mail: {user.email}</p>
         </div>
       </AppContainer>
-      <AppSideMenu />
     </>
   );
 }

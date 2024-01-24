@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 
 import AppContainer from "@/components/AppComponents/AppContainer";
 import AppHeader from "@/components/AppComponents/AppHeader";
-import AppSideMenu from "@/components/AppComponents/AppSideMenu";
 import AppBoxPerson from "@/components/AppComponents/AppBoxPerson";
 
 import { Person } from "@/types/Person";
@@ -51,7 +50,6 @@ function Persons() {
         })
         .then((res) => {
           if (res.status === 200) {
-            console.log("registro excluido");
             setPersons(persons.filter((person) => person.id !== id));
           } else {
             console.log(res.data);
@@ -102,7 +100,7 @@ function Persons() {
         <div className="ml-12">
           <label>Buscar:</label>
           <input
-            className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5 ml-2"
             type="text"
             name=""
             id=""
@@ -110,7 +108,7 @@ function Persons() {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <AppBoxPerson isOpen={open} setOpen={setOpen} />
+        <AppBoxPerson prevPersons={filteredPersons} setPersons={setPersons} isOpen={open} setOpen={setOpen} />
         <div className="shadow-md ml-10 mr-10 rounded-lg">
           <table className="min-w-full text-gray-500 mb-10">
             <thead className="uppercase bg-gray-400 text-black">
@@ -157,7 +155,6 @@ function Persons() {
           </table>
         </div>
       </AppContainer>
-      <AppSideMenu />
     </>
   );
 }

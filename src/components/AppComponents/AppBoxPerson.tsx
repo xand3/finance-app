@@ -1,4 +1,5 @@
 import URL from "@/api/path";
+import { Person } from "@/types/Person";
 
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -7,9 +8,12 @@ import { useState } from "react";
 type Props = {
   isOpen: boolean;
   setOpen: (isOpen: boolean) => void;
+  setPersons: (persons: Person[]) => void;
+  prevPersons: Person[];
 };
 
-export default function AppBoxPerson({ isOpen, setOpen }: Props) {
+
+export default function AppBoxPerson({ isOpen, setOpen, setPersons, prevPersons }: Props) {
   const [person, setPerson] = useState<string>("");
 
   const handleAddPerson =  (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,8 +34,8 @@ export default function AppBoxPerson({ isOpen, setOpen }: Props) {
         )
         .then((res) => {
           if (res.status === 201) {
-            console.log("registro adicionado com sucesso");
             setOpen(!open);
+            setPersons([...prevPersons, res.data.detail[0]])
           } else {
             console.log(res);
           }
@@ -43,13 +47,13 @@ export default function AppBoxPerson({ isOpen, setOpen }: Props) {
 
   if (isOpen) {
     return (
-      <div className="fixed top-0 left-0 right-0 bottom-0 m-auto w-2/3 h-2/3 bg-slate-300 opacity-80 rounded-lg">
+      <div className="fixed top-0 left-0 right-0 bottom-0 m-auto w-1/3 h-1/4 bg-slate-300 opacity-90 rounded-lg flex justify-center items-center">
         <form onSubmit={handleAddPerson}>
           <div className="flex flex-col">
             <label htmlFor="person">Nome:</label>
             <input
               required
-              className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="person"
               type="text"
               placeholder=""
@@ -61,12 +65,12 @@ export default function AppBoxPerson({ isOpen, setOpen }: Props) {
 
           <div className="pt-10">
             <button
-              className="bg-red-400 p-3 mr-3"
+              className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
               onClick={() => setOpen(!isOpen)}
             >
               FECHAR
             </button>
-            <button type="submit" className="bg-green-200 p-3 ml-3">
+            <button type="submit" className=" bg-slate-200 p-3 rounded-md hover:bg-slate-100 border">
               ADICIONAR
             </button>
           </div>
