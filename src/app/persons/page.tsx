@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -15,6 +15,7 @@ import URL from "@/api/path";
 
 function Persons() {
   const [persons, setPersons] = useState<Person[]>([]);
+  const [search, setSearch] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
 
@@ -22,6 +23,23 @@ function Persons() {
   useEffect(() => {
     fetchPersons();
   }, []);
+
+  const handleEditPerson = (id: string) => {
+    try {
+      axios.put(`${URL}/v1/person${id}`, {
+        description: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const filteredPersons = useMemo(() => {
+    const lowerSearch = search.toLowerCase();
+    return persons.filter((person) =>
+      person.description.toLowerCase().includes(lowerSearch)
+    );
+  }, [search, persons]);
 
   const handleDeletePerson = (id: string) => {
     // setPersons(persons.filter(person => person.id !== id));
@@ -35,7 +53,7 @@ function Persons() {
         .then((res) => {
           if (res.status === 200) {
             console.log("registro excluido");
-            setPersons(persons.filter(person => person.id !== id));
+            setPersons(persons.filter((person) => person.id !== id));
           } else {
             console.log(res.data);
           }
@@ -82,6 +100,17 @@ function Persons() {
             </button>
           </div>
         </div>
+        <div>
+          <label>Buscar:</label>
+          <input
+            className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name=""
+            id=""
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
         <AppBoxPerson isOpen={open} setOpen={setOpen} />
         <div className="shadow-md ml-10 mr-10 rounded-lg">
           <table className="min-w-full text-gray-500 mb-10">
@@ -99,7 +128,7 @@ function Persons() {
               </tr>
             </thead>
             <tbody>
-              {persons.map((person) => (
+              {filteredPersons.map((person) => (
                 <tr
                   key={person.id}
                   className="border-b bg-slate-100 border-gray-700 hover:bg-gray-50"
