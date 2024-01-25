@@ -78,9 +78,13 @@ function Persons() {
         if (error.response.status === 404) {
           setError(error.response.data.detail);
         } else {
-          setError("Um erro inesperado aconteceu, por favor tente novamente");
+          setError("Um erro inesperado aconteceu, por favor tente novamente.");
         }
       });
+  };
+
+  const handlePerson = (person: Person) => {
+    setPersons([...persons, person]);
   };
 
   return (
@@ -110,12 +114,14 @@ function Persons() {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <AppBoxPerson
-          prevPersons={filteredPersons}
-          setPersons={setPersons}
-          isOpen={openAdd}
-          setOpenAdd={setOpenAdd}
-        />
+        {openAdd && (
+          <AppBoxPerson
+            setIsOpen={() => setOpenAdd(!openAdd)}
+            func={handlePerson}
+            setOpenAdd={setOpenAdd}
+          />
+        )}
+
         {openEdit && <AppModal>conteudo</AppModal>}
         <div className="shadow-md ml-10 mr-10 rounded-lg">
           <table className="min-w-full text-gray-500 mb-10">
@@ -150,7 +156,11 @@ function Persons() {
                       onClick={() => setOpenEdit(!openEdit)}
                       className="flex justify-center items-center rounded-md hover:bg-slate-300 px-3 py-2"
                     >
-                      <img className="min-w-4 w-5" src="/icons/lapis.svg" alt="" />
+                      <img
+                        className="min-w-4 w-5"
+                        src="/icons/lapis.svg"
+                        alt=""
+                      />
                     </button>
                   </td>
                   <td className="pl-5">
@@ -158,7 +168,11 @@ function Persons() {
                       onClick={() => handleDeletePerson(person.id)}
                       className="flex justify-center items-center rounded-md hover:bg-red-500 px-3 py-2"
                     >
-                      <img className="min-w-4 w-5" src="icons/lixeira.svg" alt="" />
+                      <img
+                        className="min-w-4 w-5"
+                        src="icons/lixeira.svg"
+                        alt=""
+                      />
                     </button>
                   </td>
                 </tr>
@@ -166,10 +180,10 @@ function Persons() {
             </tbody>
           </table>
           {error && filteredPersons.length === 0 && (
-          <div className="flex justify-center items-center w-full pb-10">
-            {error}
-          </div>
-        )}
+            <div className="flex justify-center items-center w-full pb-10">
+              {error}
+            </div>
+          )}
         </div>
       </AppContainer>
     </>

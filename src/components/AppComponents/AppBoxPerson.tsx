@@ -6,17 +6,15 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 
 type Props = {
-  isOpen: boolean;
-  setOpenAdd: (openAdd: boolean) => void;
-  setPersons: (persons: Person[]) => void;
-  prevPersons: Person[];
+  setIsOpen: (isOpen: boolean) => void;
+  func: (person: Person) => void;
+  setOpenAdd: (valor: boolean) => void;
 };
 
 export default function AppBoxPerson({
-  isOpen,
   setOpenAdd,
-  setPersons,
-  prevPersons,
+  func,
+  setIsOpen
 }: Props) {
   const [person, setPerson] = useState<string>("");
 
@@ -38,8 +36,8 @@ export default function AppBoxPerson({
         )
         .then((res) => {
           if (res.status === 201) {
-            setOpenAdd(!isOpen);
-            setPersons([...prevPersons, res.data.detail[0]]);
+            func(res.data.detail[0]);
+            setIsOpen(false)
           } else {
             console.log(res);
           }
@@ -49,7 +47,7 @@ export default function AppBoxPerson({
     }
   };
 
-  if (isOpen) {
+  {
     return (
       <div className="fixed top-0 left-0 right-0 bottom-0 m-auto max-w-md h-1/4 bg-slate-300 opacity-90 rounded-lg flex justify-center items-center ">
         <form onSubmit={handleAddPerson}>
@@ -70,7 +68,7 @@ export default function AppBoxPerson({
           <div className="pt-5">
             <button
               className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
-              onClick={() => setOpenAdd(!isOpen)}
+              onClick={() => setOpenAdd(false)}
             >
               FECHAR
             </button>
@@ -84,6 +82,5 @@ export default function AppBoxPerson({
         </form>
       </div>
     );
-  } else {
   }
 }
