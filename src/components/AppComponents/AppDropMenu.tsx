@@ -29,14 +29,14 @@ export default function AppDropMenu() {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel className="absolute -right-24 top-2 mt-5 flex -translate-x-1/2 px-4">
+        <Popover.Panel className="absolute -right-28 top-3 mt-5 flex -translate-x-1/2 px-4">
           <div className="w-1/2 max-w-sm flex-auto overflow-hidden rounded-lg bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
             <div className="">
               <a
                 href="/profile"
                 className="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-gray-100"
               >
-                <div className="group relative flex gap-x-6 rounded-sm p-4 hover:bg-gray-50">
+                <div className="group items-center relative flex gap-x-6 rounded-sm p-4 hover:bg-gray-50">
                   <div className="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                     <img width={25} src="/devs/dev.png" />
                   </div>
@@ -50,9 +50,9 @@ export default function AppDropMenu() {
                 onClick={handleLogout}
                 className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
               >
-                <div className="group relative flex gap-x-6 rounded-sm p-4 hover:bg-gray-50">
+                <div className="group relative flex items-center gap-x-6 rounded-sm p-4 hover:bg-gray-50">
                   <div className="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                    <img width={25} src="/icons/sair.png" alt="" />
+                    <img width={20} src="/icons/sair.svg" alt="" />
                   </div>
                   <div>
                     <p>Sair</p>

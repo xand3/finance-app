@@ -16,8 +16,11 @@ import URL from "@/api/path";
 function Persons() {
   const [persons, setPersons] = useState<Person[]>([]);
   const [search, setSearch] = useState<string>("");
+
   const [error, setError] = useState<string>("");
+
   const [openAdd, setOpenAdd] = useState<boolean>(false);
+  const [openEdit, setOpenEdit] = useState<boolean>(false);
 
   const token = Cookies.get("token");
   useEffect(() => {
@@ -113,6 +116,7 @@ function Persons() {
           isOpen={openAdd}
           setOpenAdd={setOpenAdd}
         />
+        {openEdit && <AppModal>conteudo</AppModal>}
         <div className="shadow-md ml-10 mr-10 rounded-lg">
           <table className="min-w-full text-gray-500 mb-10">
             <thead className="uppercase bg-gray-400 text-black">
@@ -128,11 +132,7 @@ function Persons() {
                 </th>
               </tr>
             </thead>
-            {error && filteredPersons.length === 0 && (
-              <div className="flex justify-center items-center m-3 w-full">
-                {error}
-              </div>
-            )}
+
             <tbody>
               {filteredPersons.map((person) => (
                 <tr
@@ -146,8 +146,11 @@ function Persons() {
                     {person.description}
                   </td>
                   <td className="pl-5">
-                    <button className="flex justify-center items-center rounded-md hover:bg-slate-300 px-3 py-2">
-                      <img width={20} src="/icons/editar.png" alt="" />
+                    <button
+                      onClick={() => setOpenEdit(!openEdit)}
+                      className="flex justify-center items-center rounded-md hover:bg-slate-300 px-3 py-2"
+                    >
+                      <img className="min-w-4 w-5" src="/icons/lapis.svg" alt="" />
                     </button>
                   </td>
                   <td className="pl-5">
@@ -155,13 +158,18 @@ function Persons() {
                       onClick={() => handleDeletePerson(person.id)}
                       className="flex justify-center items-center rounded-md hover:bg-red-500 px-3 py-2"
                     >
-                      <img width={20} src="icons/excluir.png" alt="" />
+                      <img className="min-w-4 w-5" src="icons/lixeira.svg" alt="" />
                     </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          {error && filteredPersons.length === 0 && (
+          <div className="flex justify-center items-center w-full pb-10">
+            {error}
+          </div>
+        )}
         </div>
       </AppContainer>
     </>

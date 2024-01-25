@@ -11,22 +11,22 @@ type option = {
 const options: option[] = [
   {
     name: "Dashboard",
-    icon: "/icons/dashboard.png",
+    icon: "/icons/dashboard.svg",
     href: "/dashboard",
   },
   {
     name: "Dividas",
-    icon: "/icons/divida.png",
+    icon: "/icons/receita.svg",
     href: "/debts",
   },
   {
     name: "Receitas",
-    icon: "/icons/receita.png",
+    icon: "/icons/receita.svg",
     href: "/incomes",
   },
   {
-    name: "Credores/Devedores",
-    icon: "/icons/pessoa.png",
+    name: "Credores / Devedores",
+    icon: "/icons/pessoa.svg",
     href: "/persons",
   }
 ];
