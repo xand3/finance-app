@@ -18,6 +18,11 @@ const options = [
     icon: "/icons/receita.png",
     href: "/incomes",
   },
+  {
+    name: "Credores/Devedores",
+    icons: "/icons/pessoas.png",
+    href: "/persons",
+  }
 ];
 
 export default function AppHeader() {

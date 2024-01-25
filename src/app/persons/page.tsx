@@ -24,13 +24,11 @@ function Persons() {
   }, []);
 
   const handleEditPerson = (id: string) => {
-    try {
-      axios.put(`${URL}/v1/person${id}`, {
-        description: "",
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    axios.put(`${URL}/v1/person${id}`, {
+      description: "",
+    });
+
+    console.log(error);
   };
 
   const filteredPersons = useMemo(() => {
@@ -66,17 +64,19 @@ function Persons() {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }).then((res) => {
+      })
+      .then((res) => {
         if (res.status === 200) {
           setPersons(res.data);
         }
-      }).catch((error) => {
-        if(error.response.status === 404) {
+      })
+      .catch((error) => {
+        if (error.response.status === 404) {
           setError(error.response.data.detail);
         } else {
           setError("Um erro inesperado aconteceu, por favor tente novamente");
         }
-      })
+      });
   };
 
   return (
@@ -127,7 +127,11 @@ function Persons() {
                 </th>
               </tr>
             </thead>
-            {error && filteredPersons.length === 0 && <div className="flex justify-center items-center m-3">{error}</div>}
+            {error && filteredPersons.length === 0 && (
+              <div className="flex justify-center items-center m-3 w-full">
+                {error}
+              </div>
+            )}
             <tbody>
               {filteredPersons.map((person) => (
                 <tr

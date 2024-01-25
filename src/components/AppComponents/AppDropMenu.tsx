@@ -50,7 +50,6 @@ export default function AppDropMenu() {
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
                   >
                     Sair
-                    <span className="absolute inset-0" />
                   </button>
                 </div>
               </div>
