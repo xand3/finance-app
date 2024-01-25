@@ -7,14 +7,14 @@ import { useState } from "react";
 
 type Props = {
   isOpen: boolean;
-  setOpen: (isOpen: boolean) => void;
+  setOpenAdd: (openAdd: boolean) => void;
   setPersons: (persons: Person[]) => void;
   prevPersons: Person[];
 };
 
 export default function AppBoxPerson({
   isOpen,
-  setOpen,
+  setOpenAdd,
   setPersons,
   prevPersons,
 }: Props) {
@@ -38,7 +38,7 @@ export default function AppBoxPerson({
         )
         .then((res) => {
           if (res.status === 201) {
-            setOpen(!open);
+            setOpenAdd(!isOpen);
             setPersons([...prevPersons, res.data.detail[0]]);
           } else {
             console.log(res);
@@ -70,7 +70,7 @@ export default function AppBoxPerson({
           <div className="pt-5">
             <button
               className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
-              onClick={() => setOpen(!isOpen)}
+              onClick={() => setOpenAdd(!isOpen)}
             >
               FECHAR
             </button>

@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import AppContainer from "@/components/AppComponents/AppContainer";
 import AppHeader from "@/components/AppComponents/AppHeader";
 import AppBoxPerson from "@/components/AppComponents/AppBoxPerson";
+import AppModal from "@/components/AppComponents/AppModal";
 
 import { Person } from "@/types/Person";
 
@@ -16,7 +17,7 @@ function Persons() {
   const [persons, setPersons] = useState<Person[]>([]);
   const [search, setSearch] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [open, setOpen] = useState<boolean>(false);
+  const [openAdd, setOpenAdd] = useState<boolean>(false);
 
   const token = Cookies.get("token");
   useEffect(() => {
@@ -88,7 +89,7 @@ function Persons() {
           <div className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border">
             <button
               onClick={() => {
-                setOpen(!open);
+                setOpenAdd(!openAdd);
               }}
             >
               Adicionar
@@ -109,8 +110,8 @@ function Persons() {
         <AppBoxPerson
           prevPersons={filteredPersons}
           setPersons={setPersons}
-          isOpen={open}
-          setOpen={setOpen}
+          isOpen={openAdd}
+          setOpenAdd={setOpenAdd}
         />
         <div className="shadow-md ml-10 mr-10 rounded-lg">
           <table className="min-w-full text-gray-500 mb-10">
