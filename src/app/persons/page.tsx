@@ -17,6 +17,7 @@ function Persons() {
   const [persons, setPersons] = useState<Person[]>([]);
   const [search, setSearch] = useState<string>("");
   const [description, setNewDescription] = useState<string>("");
+  const [editingPersonId, setEditingPersonId] = useState<string>("");
 
   const [error, setError] = useState<string>("");
 
@@ -24,6 +25,7 @@ function Persons() {
   const [openEdit, setOpenEdit] = useState<boolean>(false);
 
   const token = Cookies.get("token");
+
   useEffect(() => {
     fetchPersons();
   }, []);
@@ -55,7 +57,7 @@ function Persons() {
           setPersons((persons) =>
             persons.map((person) =>
               person.id === id
-                ? { ...person, newDescription: newDescription }
+                ? { ...person, description: newDescription }
                 : person
             )
           );
@@ -174,7 +176,7 @@ function Persons() {
                     scope="row"
                     className="pl-3 py-3 text-left font-medium text-gray-900 whitespace-nowrap"
                   >
-                    {openEdit && (
+                    {openEdit && editingPersonId === person.id && (
                       <AppEditPerson>
                         <div>
                           <form
@@ -197,7 +199,11 @@ function Persons() {
                             <div>
                               <button
                                 className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
-                                onClick={() => setOpenEdit(false)}
+                                onClick={() => {
+                                  setOpenEdit(false);
+                                  setEditingPersonId("");
+                                  setNewDescription("");
+                                }}
                               >
                                 FECHAR
                               </button>
@@ -218,6 +224,8 @@ function Persons() {
                     <button
                       onClick={() => {
                         setOpenEdit(!openEdit);
+                        setEditingPersonId(person.id);
+                        setNewDescription(person.description);
                       }}
                       className="flex justify-center items-center rounded-md hover:bg-slate-300 px-3 py-2"
                     >
