@@ -6,15 +6,13 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 
 type Props = {
-  setIsOpen: (isOpen: boolean) => void;
-  func: (person: Person) => void;
-  setOpenAdd: (valor: boolean) => void;
+  handlePersons: (person: Person) => void;
+  setOpenAdd: (isOpen: boolean) => void;
 };
 
 export default function AppBoxPerson({
   setOpenAdd,
-  func,
-  setIsOpen
+  handlePersons,
 }: Props) {
   const [person, setPerson] = useState<string>("");
 
@@ -36,8 +34,8 @@ export default function AppBoxPerson({
         )
         .then((res) => {
           if (res.status === 201) {
-            func(res.data.detail[0]);
-            setIsOpen(false)
+            handlePersons(res.data.detail[0]);
+            setOpenAdd(false);
           } else {
             console.log(res);
           }
@@ -59,6 +57,7 @@ export default function AppBoxPerson({
               id="person"
               type="text"
               placeholder=""
+              value={person}
               onChange={(e) => {
                 setPerson(e.target.value);
               }}

@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import AppContainer from "@/components/AppComponents/AppContainer";
 import AppHeader from "@/components/AppComponents/AppHeader";
 import AppBoxPerson from "@/components/AppComponents/AppBoxPerson";
-import AppModal from "@/components/AppComponents/AppModal";
+import AppEditPerson from "@/components/AppComponents/AppEditPerson";
 
 import { Person } from "@/types/Person";
 
@@ -16,6 +16,7 @@ import URL from "@/api/path";
 function Persons() {
   const [persons, setPersons] = useState<Person[]>([]);
   const [search, setSearch] = useState<string>("");
+  const [description, setNewDescription] = useState<string>("");
 
   const [error, setError] = useState<string>("");
 
@@ -27,12 +28,41 @@ function Persons() {
     fetchPersons();
   }, []);
 
-  const handleEditPerson = (id: string) => {
-    axios.put(`${URL}/v1/person${id}`, {
-      description: "",
-    });
-
-    console.log(error);
+  const handleEditPerson = (
+    e: React.FormEvent<HTMLFormElement>,
+    id: string,
+    newDescription: string
+  ) => {
+    e.preventDefault();
+    console.log(persons);
+    console.log(id);
+    console.log(newDescription);
+    axios
+      .put(
+        `${URL}/v1/person/${id}`,
+        {
+          description: newDescription,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data);
+          setPersons((persons) =>
+            persons.map((person) =>
+              person.id === id
+                ? { ...person, newDescription: newDescription }
+                : person
+            )
+          );
+          setOpenEdit(false);
+          console.log("registro atualizado com sucesso");
+        }
+      });
   };
 
   const filteredPersons = useMemo(() => {
@@ -83,7 +113,7 @@ function Persons() {
       });
   };
 
-  const handlePerson = (person: Person) => {
+  const handlePersons = (person: Person) => {
     setPersons([...persons, person]);
   };
 
@@ -115,14 +145,9 @@ function Persons() {
           />
         </div>
         {openAdd && (
-          <AppBoxPerson
-            setIsOpen={() => setOpenAdd(!openAdd)}
-            func={handlePerson}
-            setOpenAdd={setOpenAdd}
-          />
+          <AppBoxPerson handlePersons={handlePersons} setOpenAdd={setOpenAdd} />
         )}
 
-        {openEdit && <AppModal>conteudo</AppModal>}
         <div className="shadow-md ml-10 mr-10 rounded-lg">
           <table className="min-w-full text-gray-500 mb-10">
             <thead className="uppercase bg-gray-400 text-black">
@@ -149,11 +174,51 @@ function Persons() {
                     scope="row"
                     className="pl-3 py-3 text-left font-medium text-gray-900 whitespace-nowrap"
                   >
+                    {openEdit && (
+                      <AppEditPerson>
+                        <div>
+                          <form
+                            onSubmit={(e) =>
+                              handleEditPerson(e, person.id, description)
+                            }
+                          >
+                            <label>Nome:</label>
+                            <input
+                              required
+                              className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5 ml-2"
+                              type="text"
+                              name=""
+                              id=""
+                              value={description}
+                              onChange={(e) =>
+                                setNewDescription(e.target.value)
+                              }
+                            />
+                            <div>
+                              <button
+                                className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
+                                onClick={() => setOpenEdit(false)}
+                              >
+                                FECHAR
+                              </button>
+                              <button
+                                type="submit"
+                                className=" bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
+                              >
+                                ATUALIZAR
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </AppEditPerson>
+                    )}
                     {person.description}
                   </td>
                   <td className="pl-5">
                     <button
-                      onClick={() => setOpenEdit(!openEdit)}
+                      onClick={() => {
+                        setOpenEdit(!openEdit);
+                      }}
                       className="flex justify-center items-center rounded-md hover:bg-slate-300 px-3 py-2"
                     >
                       <img

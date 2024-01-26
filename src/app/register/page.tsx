@@ -15,7 +15,9 @@ export default function RegisterPage() {
   const [userEmail, setUserEmail] = useState<string>("");
   const [userPwd, setUserPwd] = useState<string>("");
   const [pwdConfirm, setPwdConfirm] = useState<string>("");
+
   const [pwdFocus, setPwdFocus] = useState<boolean>(false);
+  
   const [message, setMessage] = useState<string>("");
 
   const handlePwd = () => {
