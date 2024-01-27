@@ -138,7 +138,7 @@ function Persons() {
         <div className="ml-12">
           <label>Buscar:</label>
           <input
-            className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5 ml-2"
+            className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5 ml-2 max-w-[200px]"
             type="text"
             name=""
             id=""
@@ -184,13 +184,13 @@ function Persons() {
                               handleEditPerson(e, person.id, description)
                             }
                           >
-                            <label>Nome:</label>
+                            <label htmlFor="description">Nome:</label>
                             <input
                               required
                               className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5 ml-2"
                               type="text"
-                              name=""
-                              id=""
+                              name="description"
+                              id="description"
                               value={description}
                               onChange={(e) =>
                                 setNewDescription(e.target.value)
