@@ -45,9 +45,9 @@ export default function Features() {
             </div>
           </div>
           <img
-            src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+            src="/icons/finance-app.png"
             alt="Product screenshot"
-            className="rounded-xl shadow-xl ring-1 ring-gray-400/10"
+            className="rounded-xl shadow-xl"
           />
         </div>
       </div>

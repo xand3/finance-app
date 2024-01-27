@@ -47,7 +47,7 @@ export default function AppBoxPerson({
 
   {
     return (
-      <div className="fixed top-0 left-0 right-0 bottom-0 m-auto max-w-md h-1/4 bg-slate-300 opacity-90 rounded-lg flex justify-center items-center ">
+      <div className="w-72 fixed top-0 left-0 right-0 bottom-0 m-auto h-1/4 bg-slate-300 opacity-90 rounded-lg flex justify-center items-center ">
         <form onSubmit={handleAddPerson}>
           <div className="flex flex-col">
             <label htmlFor="person">Nome:</label>
@@ -64,9 +64,9 @@ export default function AppBoxPerson({
             />
           </div>
 
-          <div className="pt-5">
+          <div className="pt-5 flex justify-around">
             <button
-              className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
+              className=" bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
               onClick={() => setOpenAdd(false)}
             >
               FECHAR

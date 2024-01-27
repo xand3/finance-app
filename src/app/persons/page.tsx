@@ -124,8 +124,8 @@ function Persons() {
       <AppHeader />
       <AppContainer myClasses="pt-3">
         <div className="flex justify-between mb-5 items-center">
-          <h1 className="text-3xl ml-12">Credores / Devedores</h1>
-          <div className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border">
+          <h1 className="text-3xl ml-3 md:ml-10">Credores / Devedores</h1>
+          <div className="mr-3 md:mr-10 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border">
             <button
               onClick={() => {
                 setOpenAdd(!openAdd);
@@ -150,7 +150,7 @@ function Persons() {
           <AppBoxPerson handlePersons={handlePersons} setOpenAdd={setOpenAdd} />
         )}
 
-        <div className="shadow-md ml-10 mr-10 rounded-lg">
+        <div className="shadow-md ml-10 mr-10">
           <table className="min-w-full text-gray-500 mb-10">
             <thead className="uppercase bg-gray-400 text-black">
               <tr className="text-sm">
@@ -184,10 +184,11 @@ function Persons() {
                               handleEditPerson(e, person.id, description)
                             }
                           >
+                            <div className="flex flex-col">
                             <label htmlFor="description">Nome:</label>
                             <input
                               required
-                              className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5 ml-2"
+                              className="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                               type="text"
                               name="description"
                               id="description"
@@ -196,9 +197,11 @@ function Persons() {
                                 setNewDescription(e.target.value)
                               }
                             />
-                            <div>
+                            </div>
+                            
+                            <div className="flex justify-around pt-5">
                               <button
-                                className="mr-12 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
+                                className="bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
                                 onClick={() => {
                                   setOpenEdit(false);
                                   setEditingPersonId("");
