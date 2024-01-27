@@ -66,7 +66,7 @@ export default function PageHeader() {
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                LOGO
+                <img width={30} src="/icons/small-logo.png" alt="" />
               </a>
               <button
                 type="button"

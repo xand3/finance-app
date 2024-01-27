@@ -17,7 +17,7 @@ export default function PageFooter() {
         </div>
 
         <div className="mb-5">
-          <p>&#169; Finances App. Todos os direitos reservados.</p>
+          <p className="text-center">&#169; Finances App. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

@@ -25,7 +25,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon/favicon.ico" />
       </head>
-      <body className={`${inter.className}`}>{children}</body>
+      <body className={`${inter.className} h-full`}>{children}</body>
     </html>
   );
 }

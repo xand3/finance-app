@@ -23,7 +23,7 @@ const devs = [
   {
     name: "Marilson Souza",
     job: "Back End Developer",
-    exp: "",
+    exp: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tincidunt dui ut ornare lectus sit amet est placerat. Ut tristique et egestas quis ipsum suspendisse ultrices. Vel risus commodo viverra maecenas accumsan lacus vel facilisis. ",
     photo: "/devs/dev.png",
     socials: [
       {
@@ -44,14 +44,14 @@ export default function DevelopersPage() {
   return (
     <>
       <PageHeader />
-      <section className="h-80 flex justify-center mt-8 mb-60 mx-32">
+      <section className=" flex justify-center mt-8 mx-5 mb-8">
         <div className="flex flex-col">
           <div>
             <h1 className="text-2xl mb-3">Desenvolvedores:</h1>
           </div>
-          <div className="grid grid-cols-2 gap-28">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-10">
             {devs.map((dev) => (
-              <div key={dev.name} className="border-2 rounded-lg p-5">
+              <div key={dev.name} className="md:border-2 rounded-lg p-5">
                 <div>
                   <img className="h-44 my-5" src={dev.photo} alt="" />
                 </div>
