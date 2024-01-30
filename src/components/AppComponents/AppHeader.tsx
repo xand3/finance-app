@@ -16,8 +16,8 @@ const options: option[] = [
     href: "/dashboard",
   },
   {
-    name: "Dividas",
-    icon: "/icons/divida.svg",
+    name: "Despesas",
+    icon: "/icons/despesa.svg",
     href: "/debts",
   },
   {
@@ -26,7 +26,7 @@ const options: option[] = [
     href: "/incomes",
   },
   {
-    name: "Credores / Devedores",
+    name: "Credores & Devedores",
     icon: "/icons/pessoa.svg",
     href: "/persons",
   },
@@ -40,7 +40,7 @@ export default function AppHeader() {
   }
 
   return (
-    <header className="max-h-[80px] fixed top-0 shadow-md bg-slate-200 w-screen border-gray-600 flex items-center">
+    <header className="max-h-[80px] fixed top-0 shadow-md bg-primaryColor text-white w-screen flex items-center">
       <nav
         className="w-full flex items-center justify-between p-6 lg:px-8 uppercase text-sm"
         aria-label="Global"
@@ -57,16 +57,16 @@ export default function AppHeader() {
           <button onClick={handleToggle} className="md:hidden">
             <img className="max-w-5" src="/icons/menu.svg" alt=""/>
           </button>
-          <div className={`md:flex ${isOpen ? "block absolute top-16 overflow-hidden rounded-lg bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 pr-6" : "hidden"}`}>
+          <div className={`md:flex ${isOpen ? "block absolute top-16 overflow-hidden rounded-lg text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 pr-6" : "hidden"}`}>
             {options.map((option) => (
               <a
                 key={option.name}
-                className="hover:bg-gray-100 rounded p-2"
+                className="hover:bg-secundaryColor rounded-md p-2"
                 href={option.href}
               >
-                <div className="flex flex-start items-center ">
+                <div className="flex flex-start items-center">
                   <img
-                    className="ml-6 mr-5"
+                    className="ml-6 mr-5 fill-white"
                     width={20}
                     src={option.icon}
                     alt={option.name}

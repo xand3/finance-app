@@ -124,21 +124,21 @@ function Persons() {
       <AppHeader />
       <AppContainer myClasses="pt-3">
         <div className="flex justify-between mb-5 items-center">
-          <h1 className="text-3xl ml-3 md:ml-10">Credores / Devedores</h1>
-          <div className="mr-3 md:mr-10 bg-slate-200 p-3 rounded-md hover:bg-slate-100 border">
+          <h1 className="text-3xl ml-3 md:ml-10">Credores <span className="text-base">&</span> <br/>Devedores</h1>
+          <div className="mr-3 md:mr-10  p-3 rounded-lg hover:bg-slate-100 border ">
             <button
               onClick={() => {
                 setOpenAdd(!openAdd);
               }}
             >
-              Adicionar
+              ADICIONAR
             </button>
           </div>
         </div>
         <div className="ml-12">
           <label>Buscar:</label>
           <input
-            className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5 ml-2 max-w-[200px]"
+            className="shadow appearance-none border rounded-lg w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5 ml-2 max-w-[200px]"
             type="text"
             name=""
             id=""
@@ -230,7 +230,7 @@ function Persons() {
                         setEditingPersonId(person.id);
                         setNewDescription(person.description);
                       }}
-                      className="flex justify-center items-center rounded-md hover:bg-slate-300 px-3 py-2"
+                      className="flex justify-center items-center rounded-md px-3 pb-2"
                     >
                       <img
                         className="min-w-4 w-5"
@@ -242,10 +242,10 @@ function Persons() {
                   <td className="pl-5">
                     <button
                       onClick={() => handleDeletePerson(person.id)}
-                      className="flex justify-center items-center rounded-md hover:bg-red-500 px-3 py-2"
+                      className="flex justify-center items-center rounded-md px-2"
                     >
                       <img
-                        className="min-w-4 w-5"
+                        className="min-w-4 w-7"
                         src="icons/lixeira.svg"
                         alt=""
                       />

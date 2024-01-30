@@ -18,7 +18,7 @@ export default function AppDropMenu() {
         <div>
           <img width={25} src="/devs/dev.png" alt="usuario" />
         </div>
-        <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
+        <ChevronDownIcon className="h-5 w-5 fill-white" aria-hidden="true" />
       </Popover.Button>
       <Transition
         as={Fragment}
@@ -51,7 +51,7 @@ export default function AppDropMenu() {
                 className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
               >
                 <div className="group relative flex items-center gap-x-6 rounded-sm p-4 hover:bg-gray-50">
-                  <div className="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                  <div className="flex h-7 w-7 flex-none items-center justify-center rounded-lg ">
                     <img width={20} src="/icons/sair.svg" alt="" />
                   </div>
                   <div>
