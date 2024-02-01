@@ -40,9 +40,9 @@ export default function AppHeader() {
   }
 
   return (
-    <header className="max-h-[80px] fixed top-0 shadow-md bg-primaryColor text-white w-screen flex items-center">
+    <header className="min-h-[80px] fixed sm:px-5 top-0 shadow-md bg-primaryColor text-white w-screen flex items-center">
       <nav
-        className="w-full flex items-center justify-between p-6 lg:px-8 uppercase text-sm"
+        className="w-full flex items-center justify-between lg:px-8 uppercase text-sm"
         aria-label="Global"
       >
         <div className="flex">
@@ -57,16 +57,16 @@ export default function AppHeader() {
           <button onClick={handleToggle} className="md:hidden">
             <img className="max-w-5" src="/icons/menu.svg" alt=""/>
           </button>
-          <div className={`md:flex ${isOpen ? "block absolute top-16 overflow-hidden rounded-lg text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 pr-6" : "hidden"}`}>
+          <div className={`md:flex ${isOpen ? "block absolute top-16 overflow-hidden rounded-lg text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 pr-6 bg-gray-50 text-black" : "hidden"}`}>
             {options.map((option) => (
               <a
                 key={option.name}
                 className="hover:bg-secundaryColor rounded-md p-2"
                 href={option.href}
               >
-                <div className="flex flex-start items-center">
+                <div className="flex items-center">
                   <img
-                    className="ml-6 mr-5 fill-white"
+                    className="ml-6 mr-5"
                     width={20}
                     src={option.icon}
                     alt={option.name}

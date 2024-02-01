@@ -14,7 +14,9 @@ import { Person } from "@/types/Person";
 import URL from "@/api/path";
 
 function Persons() {
-  const [persons, setPersons] = useState<Person[]>([]);
+  const [persons, setPersons] = useState<Person[]>([
+    {description: "teste", id: "01"}
+  ]);
   const [search, setSearch] = useState<string>("");
   const [description, setNewDescription] = useState<string>("");
   const [editingPersonId, setEditingPersonId] = useState<string>("");
@@ -67,11 +69,13 @@ function Persons() {
       });
   };
 
+
   const filteredPersons = useMemo(() => {
     const lowerSearch = search.toLowerCase();
+    console.log(persons)
     return persons.filter((person) =>
       person.description.toLowerCase().includes(lowerSearch)
-    );
+    ) 
   }, [search, persons]);
 
   const handleDeletePerson = (id: string) => {
@@ -104,9 +108,12 @@ function Persons() {
       .then((res) => {
         if (res.status === 200) {
           setPersons(res.data);
+        } else {
+          setError(res.data.detail);
         }
       })
       .catch((error) => {
+        console.log(error)
         if (error.response.status === 404) {
           setError(error.response.data.detail);
         } else {
@@ -124,8 +131,11 @@ function Persons() {
       <AppHeader />
       <AppContainer myClasses="pt-3">
         <div className="flex justify-between mb-5 items-center">
-          <h1 className="text-3xl ml-3 md:ml-10">Credores <span className="text-base">&</span> <br/>Devedores</h1>
-          <div className="mr-3 md:mr-10  p-3 rounded-lg hover:bg-slate-100 border ">
+          <h1 className="text-xl ml-3 md:ml-10">
+            Credores <span className="text-base">&</span> <br />
+            Devedores
+          </h1>
+          <div className="mr-3 md:mr-10 shadow p-3 rounded-lg hover:bg-slate-100 border ">
             <button
               onClick={() => {
                 setOpenAdd(!openAdd);
@@ -150,9 +160,9 @@ function Persons() {
           <AppBoxPerson handlePersons={handlePersons} setOpenAdd={setOpenAdd} />
         )}
 
-        <div className="shadow-md ml-10 mr-10">
-          <table className="min-w-full text-gray-500 mb-10">
-            <thead className="uppercase bg-gray-400 text-black">
+        <div className="shadow-md mx-2 md:mx-10 ">
+          <table className="min-w-full mb-10">
+            <thead className="uppercase bg-primaryColor text-white ">
               <tr className="text-sm">
                 <th scope="col" className="py-3 pl-3 text-left w-auto">
                   Nome
@@ -185,20 +195,20 @@ function Persons() {
                             }
                           >
                             <div className="flex flex-col">
-                            <label htmlFor="description">Nome:</label>
-                            <input
-                              required
-                              className="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                              type="text"
-                              name="description"
-                              id="description"
-                              value={description}
-                              onChange={(e) =>
-                                setNewDescription(e.target.value)
-                              }
-                            />
+                              <label htmlFor="description">Nome:</label>
+                              <input
+                                required
+                                className="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="text"
+                                name="description"
+                                id="description"
+                                value={description}
+                                onChange={(e) =>
+                                  setNewDescription(e.target.value)
+                                }
+                              />
                             </div>
-                            
+
                             <div className="flex justify-around pt-5">
                               <button
                                 className="bg-slate-200 p-3 rounded-md hover:bg-slate-100 border"
@@ -255,7 +265,7 @@ function Persons() {
               ))}
             </tbody>
           </table>
-          {error && filteredPersons.length === 0 && (
+          {error && Array.isArray(filteredPersons) && (
             <div className="flex justify-center items-center w-full pb-10">
               {error}
             </div>

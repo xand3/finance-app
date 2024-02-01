@@ -23,7 +23,7 @@ const devs = [
   {
     name: "Marilson Souza",
     job: "Back End Developer",
-    exp: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tincidunt dui ut ornare lectus sit amet est placerat. Ut tristique et egestas quis ipsum suspendisse ultrices. Vel risus commodo viverra maecenas accumsan lacus vel facilisis. ",
+    exp: "Hey, folks! I'm Marilson Souza, and I wanted to share a bit about my personal project. The goal here is to solidify the knowledge I've been acquiring in Python technology. I'm always striving for innovation, applying best practices, and emphasizing clean code. It's a way to broaden my horizons even further and deepen my understanding.",
     photo: "/devs/dev.png",
     socials: [
       {

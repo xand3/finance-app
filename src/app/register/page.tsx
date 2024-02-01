@@ -29,7 +29,7 @@ export default function RegisterPage() {
     if (handlePwd() === true) {
       try {
         axios
-          .post(`${URL}/v1/signup`, {
+          .post(`${URL}/v1/auth/signup`, {
             name: userName,
             email: userEmail,
             password: userPwd,

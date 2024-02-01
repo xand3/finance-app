@@ -25,7 +25,7 @@ export default function ProfilePage() {
   const fetchUser = async () => {
     try {
       const token = Cookies.get("token");
-      axios.get(`${URL}/v1/profile`, {
+      axios.get(`${URL}/v1/user/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         }
