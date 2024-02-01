@@ -14,9 +14,7 @@ import { Person } from "@/types/Person";
 import URL from "@/api/path";
 
 function Persons() {
-  const [persons, setPersons] = useState<Person[]>([
-    {description: "teste", id: "01"}
-  ]);
+  const [persons, setPersons] = useState<Person[]>([]);
   const [search, setSearch] = useState<string>("");
   const [description, setNewDescription] = useState<string>("");
   const [editingPersonId, setEditingPersonId] = useState<string>("");
@@ -38,9 +36,6 @@ function Persons() {
     newDescription: string
   ) => {
     e.preventDefault();
-    console.log(persons);
-    console.log(id);
-    console.log(newDescription);
     axios
       .put(
         `${URL}/v1/person/${id}`,
@@ -55,7 +50,6 @@ function Persons() {
       )
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           setPersons((persons) =>
             persons.map((person) =>
               person.id === id
@@ -64,18 +58,15 @@ function Persons() {
             )
           );
           setOpenEdit(false);
-          console.log("registro atualizado com sucesso");
         }
       });
   };
 
-
-  const filteredPersons = useMemo(() => {
-    const lowerSearch = search.toLowerCase();
-    console.log(persons)
+  const filteredPersons: Person[] = useMemo(() => {
+    const lowerSearch: string = search.toLowerCase();
     return persons.filter((person) =>
-      person.description.toLowerCase().includes(lowerSearch)
-    ) 
+      person.description && person.description.toLowerCase().includes(lowerSearch)
+    );
   }, [search, persons]);
 
   const handleDeletePerson = (id: string) => {
@@ -113,7 +104,7 @@ function Persons() {
         }
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         if (error.response.status === 404) {
           setError(error.response.data.detail);
         } else {

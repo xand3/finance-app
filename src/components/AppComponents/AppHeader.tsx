@@ -61,7 +61,7 @@ export default function AppHeader() {
             {options.map((option) => (
               <a
                 key={option.name}
-                className="hover:bg-secundaryColor rounded-md p-2"
+                className={`${isOpen ? "": "hover:bg-secundaryColor"} rounded-md p-2`}
                 href={option.href}
               >
                 <div className="flex items-center">
