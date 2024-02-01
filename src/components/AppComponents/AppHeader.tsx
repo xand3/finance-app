@@ -37,7 +37,7 @@ export default function AppHeader() {
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
-  }
+  };
 
   return (
     <header className="min-h-[80px] fixed sm:px-5 top-0 shadow-md bg-primaryColor text-white w-screen flex items-center">
@@ -51,17 +51,29 @@ export default function AppHeader() {
               href="/dashboard"
               className="-m-1.5 p-1.5 flex justify-center items-center"
             >
-              <img className={`max-w-8 hidden md:block ${isOpen ? "" : ""}`} src="/icons/small-logo.png" alt="" />
+              <img
+                className={`max-w-8 hidden md:block ${isOpen ? "" : ""}`}
+                src="/icons/small-logo.png"
+                alt=""
+              />
             </a>
           </div>
           <button onClick={handleToggle} className="md:hidden">
-            <img className="max-w-5" src="/icons/menu.svg" alt=""/>
+            <img className="max-w-5" src="/icons/menu.svg" alt="" />
           </button>
-          <div className={`md:flex ${isOpen ? "block absolute top-16 overflow-hidden rounded-lg text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 pr-6 bg-gray-50 text-black" : "hidden"}`}>
+          <div
+            className={`md:flex ${
+              isOpen
+                ? "block absolute top-16 overflow-hidden rounded-lg text-sm leading-6 shadow-lg ring-1 ring-gray-900/5 ml-3 bg-gray-50 text-black"
+                : "hidden"
+            }`}
+          >
             {options.map((option) => (
               <a
                 key={option.name}
-                className={`${isOpen ? "": "hover:bg-secundaryColor"} rounded-md p-2`}
+                className={`${
+                  isOpen ? "" : "hover:bg-secundaryColor"
+                } rounded-md p-2`}
                 href={option.href}
               >
                 <div className="flex items-center mr-3">
@@ -71,7 +83,6 @@ export default function AppHeader() {
                     src={option.icon}
                     alt={option.name}
                   />
-
                   {option.name}
                 </div>
               </a>
