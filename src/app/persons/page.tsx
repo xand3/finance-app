@@ -256,7 +256,7 @@ function Persons() {
               ))}
             </tbody>
           </table>
-          {error && Array.isArray(filteredPersons) && (
+          {error && filteredPersons.length === 0 && (
             <div className="flex justify-center items-center w-full pb-10">
               {error}
             </div>

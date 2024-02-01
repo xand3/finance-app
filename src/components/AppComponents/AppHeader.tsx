@@ -64,9 +64,9 @@ export default function AppHeader() {
                 className={`${isOpen ? "": "hover:bg-secundaryColor"} rounded-md p-2`}
                 href={option.href}
               >
-                <div className="flex items-center">
+                <div className="flex items-center mr-3">
                   <img
-                    className="ml-6 mr-5"
+                    className="mr-3"
                     width={20}
                     src={option.icon}
                     alt={option.name}
